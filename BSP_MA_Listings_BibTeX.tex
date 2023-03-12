@@ -23,7 +23,8 @@
 % *) V0.5: 8.8.2014, WK: Literaturquellen überarbeitet und angepasst
 % *) V0.4: 4.8.2014, WK: Initalversion in SVN eingespielt
 %
-\documentclass[BIF,Master,nenglish]{twbook}%\documentclass[Bachelor,BMR,ngerman]{twbook}
+%\documentclass[Bachelor,BMR,ngerman]{twbook}
+\documentclass[BIF,Master,nenglish]{twbook}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{float}
@@ -32,7 +33,7 @@
 % Bitte in der folgenden Zeile den Zitierstandard festlegen
 \newcommand{\FHTWCitationType}{IEEE} % IEEE oder HARVARD möglich - wenn Sie zwischen IEEE und HARVARD wechseln, bitte die temorären Dateien (aux, bbl, ...) löschen
 %
-\ifthenelse{\equal{\FHTWCitationType}{HARVARD}}{\usepackage{harvard}}{\usepackage{bibgerm}}
+\ifthenelse{\equal{\FHTWCitationType}{HARVARD}}{\usepackage{harvard}}%{\usepackage{bibgerm}}
 
 %
 % Bei Bedarf bitte hier die Syntax-Highlightings anpassen
@@ -49,17 +50,17 @@
 
 \lstset{
 language=csh,
-basicstyle=\footnotesize\ttfamily, 
+basicstyle=\footnotesize\ttfamily,
 numbers=left,
-numberstyle=\tiny, 
-numbersep=5pt, 
-tabsize=2, 
-extendedchars=true, 
-breaklines=true, 
+numberstyle=\tiny,
+numbersep=5pt,
+tabsize=2,
+extendedchars=true,
+breaklines=true,
 frame=b,
-stringstyle=\color{red}\ttfamily, 
-showspaces=false, 
-showtabs=true, 
+stringstyle=\color{red}\ttfamily,
+showspaces=false,
+showtabs=true,
 xleftmargin=17pt,
 framexleftmargin=17pt,
 framexrightmargin=5pt,
@@ -67,7 +68,7 @@ framexbottommargin=4pt,
 commentstyle=\color{green},
 morecomment=[l]{//}, %use comment-line-style!
 morecomment=[s]{/*}{*/}, %for multiline comments
-showstringspaces=false, 
+showstringspaces=false,
 morekeywords={  abstract, event, new, struct,
                 as, explicit, null, switch,
                 base, extern, object, this,
@@ -483,7 +484,7 @@ This chapter will cover how the performance for the  monolith and microservice w
 
 
 \clearpage
-\ifthenelse{\equal{\FHTWCitationType}{HARVARD}}{}{\bibliographystyle{gerabbrv}}
+\ifthenelse{\equal{\FHTWCitationType}{IEEE}}{}{\bibliographystyle{gerabbrv}}
 \bibliography{Literatur}
 \clearpage
 
