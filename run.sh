@@ -1,5 +1,5 @@
 #!/bin/bash
-FILENAME=$1
+FILENAME=${1:--Bachelor}
 
 pdflatex $1.tex && bibtex $1.aux && pdflatex $1.tex && pdflatex $1.tex
 sleep 2
