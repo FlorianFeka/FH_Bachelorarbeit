@@ -1,9 +1,9 @@
 {
     "name": "latex-env",
     "extensions": [
-        "james-yu.latex-workshop",
         "eamodio.gitlens",
         "shardulm94.trailing-spaces",
+        "tomoki1207.pdf"
     ],
     "dockerFile": "Dockerfile",
     // "mounts": [
