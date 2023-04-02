@@ -69,18 +69,18 @@
 %
 % Einträge für Deckblatt, Kurzfassung, etc.
 %
-\title{Arbeitstitel\\Arbeitstitel}
-\author{Titel Vorname Name, Titel}
-\studentnumber{XXXXXXXXXXXXXXX}
+\title{Comparison between Microservice and Monolithic API in a Cloud Environment}
+\author{Florian Feka}
+\studentnumber{1910257104}
 %\author{Titel Vorname Name, Titel\and{}Titel Vorname Name, Titel}
 %\studentnumber{XXXXXXXXXXXXXXX\and{}XXXXXXXXXXXXXXX}
-\supervisor{Titel Vorname Name, Titel}
+\supervisor{Marvin Kosmider, BSc.}
 %\supervisor[Begutachter]{Titel Vorname Name, Titel}
 %\supervisor[Begutachterin]{Titel Vorname Name, Titel}
 %\secondsupervisor{Titel Vorname Name, Titel}
 %\secondsupervisor[Begutachter]{Titel Vorname Name, Titel}
 %\secondsupervisor[Begutachterinnen]{Titel Vorname Name, Titel}
-\place{Wien}
+\place{Vienna}
 \kurzfassung{\blindtext}
 \schlagworte{Schlagwort1, Schlagwort2, Schlagwort3, Schlagwort4}
 \outline{\blindtext}
@@ -145,153 +145,17 @@
 %
 % .. und hier beginnt die eigentliche Arbeit. Viel Erfolg beim Verfassen!
 %
-\chapter{Erste Überschrift der Ebene 1 (chapter)}
-\blinddocument
-
-\blindmathpaper
-
-\section{Erste Überschrift Tiefe 2 (section)}
-\blindtext
-
-\subsection{Erste Überschrift Tiefe 3 (subsection)}
-\blindtext
-
-\subsubsection{Erste Überschrift Tiefe 4 (subsubsection)}
-\blindtext
-
-\chapter{Zweite Überschrift der Tiefe 1 (chapter)}
-\blindtext
-
-\section{Zweite Überschrift Tiefe 2 (section)}
-\blindtext
-
-\section{Zweite Überschrift Tiefe 2 (section)}
-\blindtext
-
-\subsection{Zweite Überschrift Tiefe 3 (subsection)}
-\blindtext
-
-\subsection{Dritte Überschrift Tiefe 3 (subsection)}
-\blindtext
-
-\subsubsection{Zweite Überschrift Tiefe 4 (subsubsection)}
-\blindtext
-
-\noindent Querverweise werden in \LaTeX{} automatisch erzeugt und verwaltet, damit sie leicht aktualisiert werden können. Hier wird zum Beispiel auf Abbildung \ref{Abb1} verwiesen.
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.5\linewidth]{PICs/buchruecken}
-\caption{Beispiel für die Beschriftung eines Buchrückens.}\label{Abb1}
-\end{figure}
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.5\linewidth]{PICs/buchruecken}
-\caption{2. Beispiel für die Beschriftung eines Buchrückens.}\label{Abb2}
-\end{figure}
-
-Und hier ist ein Verweis auf Tabelle \ref{tab1}. Das gezeigte Tabellenformat ist nur ein Beispiel. Tabellen können individuell gestaltet werden.
-
-\begin{table}[!htbp]
-\centering
-\caption{Semesterplan der Lehrveranstaltung \glqq Angewandte Mathematik\grqq.}\label{tab1}
-\begin{tabular}{| p{0.3\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} |}\hline
-Datum & Thema & Raum\\\hline
-20.08.2008 & Graphentheorie & HS 3.13\\
-01.10.2008 & Biomathematik & HS 1.05\\\hline
-\end{tabular}
-\end{table}
-\begin{table}[!htbp]
-\centering
-\caption{2. Semesterplan der Lehrveranstaltung \glqq Angewandte Mathematik\grqq.}\label{tab2}
-\begin{tabular}{| p{0.3\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} |}\hline
-Datum & Thema & Raum\\\hline
-20.08.2008 & Graphentheorie & HS 3.13\\
-01.10.2008 & Biomathematik & HS 1.05\\\hline
-\end{tabular}
-\end{table}
-
-Hier wird auf die Formel \ref{Gl1} verwiesen.
-
-\begin{align}
-x = -\frac{p}{2}\pm\sqrt{\frac{p^2}{4}-q}\label{Gl1}
-\end{align}
-\begin{align}
-x = -\frac{p}{2}\pm\sqrt{\frac{p^2}{4}-q}\label{Gl2}
-\end{align}
-
-\begin{lstlisting}[language=C++,name={1. Beispiel},label={sc:bsp:1}]
-#include <iostream>
-
-void SayHello(void)
-{
-    // Kommentar
-    cout << "Hello World!" << endl;
-}
-
-int main(int argc, char **argv)
-{
-    SayHello();
-    return 0;
-}
-\end{lstlisting}
-
-Literaturverweise sollten automatisch verwaltet werden, vor allem, wenn es viele Quellenverweise gibt. Beispiele sind  \cite{Ko05a}, \cite{Ko05b}, \cite{MiGo05}, \cite{TeGo14}, \cite{HuHa07}, \cite{HuZi10}, \cite{ZiKu07}, \cite{He07}, \cite{SIE11}, \cite{SIE14}, \cite{ISO98}, \cite{ATM11}, \cite{Hu11}, \cite{Po10}. Das verwendete Zitierformat (bzw.~das Format des Literaturverzeichnisses) ist entspechend der Vorgaben der Studiengänge zu wählen.
-Es wird dringend empfohlen, BibTeX~zu verwenden (wie in diesem Beispiel).
-
-\chapter{Dritte Überschrift der Tiefe 1 (chapter)}
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.5\linewidth]{PICs/buchruecken}
-\caption{3. Beispiel für die Beschriftung eines Buchrückens.}\label{Abb3}
-\end{figure}
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.5\linewidth]{PICs/buchruecken}
-\caption{4. Beispiel für die Beschriftung eines Buchrückens.}\label{Abb4}
-\end{figure}
-
-
-\begin{table}[!htbp]
-\centering
-\caption{3. Semesterplan der Lehrveranstaltung \glqq Angewandte Mathematik\grqq.}\label{tab3}
-\begin{tabular}{| p{0.3\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} |}\hline
-Datum & Thema & Raum\\\hline
-20.08.2008 & Graphentheorie & HS 3.13\\
-01.10.2008 & Biomathematik & HS 1.05\\\hline
-\end{tabular}
-\end{table}
-\begin{table}[!htbp]
-\centering
-\caption{4. Semesterplan der Lehrveranstaltung \glqq Angewandte Mathematik\grqq.}\label{tab4}
-\begin{tabular}{| p{0.3\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} |}\hline
-Datum & Thema & Raum\\\hline
-20.08.2008 & Graphentheorie & HS 3.13\\
-01.10.2008 & Biomathematik & HS 1.05\\\hline
-\end{tabular}
-\end{table}
-
-\begin{align}
-x = -\frac{p}{2}\pm\sqrt{\frac{p^2}{4}-q}\label{Gl3}
-\end{align}
-\begin{align}
-x = -\frac{p}{2}\pm\sqrt{\frac{p^2}{4}-q}\label{Gl4}
-\end{align}
-\begin{lstlisting}[language=C++,name={2. Beispiel},label={sc:bsp:2}]
-#include <iostream>
-
-void SayHello(void)
-{
-    // Kommentar
-    cout << "Hello World!" << endl;
-}
-
-int main(int argc, char **argv)
-{
-    SayHello();
-    return 0;
-}
-\end{lstlisting}
+\chapter{Introduction}
+Companies nowadays have many options on how to provide their software product to their customers, and with this, many things to consider when choosing a hosting platform. Corporations can choose to deploy on-premise, handling everything from the software to maintaining servers or delegate some of that work to cloud providers. Applications can be deployed through Infrastructure as a Service (IaaS)\cite{microIaas} or platform as a Service (PaaS)\cite{redPaas} and have a chance to take advantage of other services provided by Cloud Providers, like auto-scaling, high availability, continuous delivery and more. Most companies that move an application to the Cloud predominantly move a monolithic application.
+\\
+\\
+Companies move to the cloud in hope of utilising features of IaaS/PaaS solutions to improve efficiency in their processes and to improve scaling to brace for peaks in requests. Most software applications developed by companies are three-tiered web applications, commonly using Java, Net, and PHP. Many of those applications face problems when migrating to the cloud since many architecture styles commonly used when developing web applications do not consider the ability to add/remove servers on demand and do not consider the option for multiple server instances to run.
+\\
+\\
+Monoliths are applications built in, often one, big code base. There are variations since some monoliths are split according to their overarching responsibility. For example, a monolith that has one code base including the back-end and front-end(e.g. Spring in combination with Thymeleaf) could be split into Spring being the back-end and Angular being the front-end.
+\\
+\\
+Microservices are separate, small, modular services that can be independently developed, updated, deployed and managed. Each service runs in its process and communicates over the network using a well-defined communication protocol. These services are self-describing and can be discovered and used by other processes without human intervention. Microservices are loosely coupled and can be easily scaled up and down based on the current business needs. They can also be used to develop applications much faster than a monolithic approach because each service can be developed independently of one another\cite{ade2017}.
 
 %
 % Hier beginnen die Verzeichnisse.
