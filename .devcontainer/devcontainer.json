@@ -5,7 +5,8 @@
             "extensions": [
                 "eamodio.gitlens",
                 "shardulm94.trailing-spaces",
-                "tomoki1207.pdf"
+                "tomoki1207.pdf",
+                "emeraldwalk.RunOnSave"
             ]
         }
     },
