@@ -190,7 +190,7 @@ Most other work either compared those two architectural styles by business metri
 In the following sections the main subjects of this bachelor thesis are summarized and explained. Sections 2.1 - 2.3 describe the theoretical basics and sections 2.4 - 2.9 present the technologies for this thesis.
 
 \section{Web Development}
-
+% TODO: fill
 
 \section{Monolith}
 Because it is simpler, monolithic architecture is the norm for beginning application development. An all-inclusive single unit called a monolith application is created and deployed \cite{comp}. As shown in Figure \ref{monolith}, a typical monolithic program comprises of a user interface (UI) layer, a business logic layer, and a data interface layer that interacts with the database. Development should begin with monolithic architecture as it speeds up the earliest stages of development \cite{chllng}.
@@ -348,13 +348,13 @@ K6 is an load testing tool which helps with performance testing Web APIs and oth
 
 \clearpage
 \chapter{Applied Methods}
-The project created for this thesis called "Examich" is for students to create, manage and share practice exams. This service also offers the option to generate a PDF Version of the practice exams. Since this thesis focuses on the API the frontend for this project will be skipped.
+The project created for this thesis called "Examich" is for students to create, manage and share practice exams. This service also offers the option to generate a PDF Version of the practice exams. Since this thesis focuses on the API the frontend for this project will be skipped. The application was written as a monolith and then broken down into three microsercvices. The following sections will present how each version was implemented and how those were load tested.
 
 \section{Monolith}
 This Section will explain how the Monolith was implemented and how the tools mentiond above were used.
 
 \subsection{Architecture \& Implementation}
-
+The monolith consists of tree main parts as shown in Figure \ref{examichMonolith}. The API that exposes the functionality to its users. The business logic which handles the PDF Generation and passes on basic Create, Read, Update and Delete operations to the data interface. The data interface which handles the communication with the database. The API was written with ASP.NET Core in which JWT was used to authenticate the user in each request.
 \begin{figure} [H]
  \begin{center}
     \includegraphics[width=0.6\linewidth]{img/ExamichMonolith.png}
@@ -362,12 +362,9 @@ This Section will explain how the Monolith was implemented and how the tools men
  \caption{Examich Monolith Architecture}
  \label{examichMonolith}
 \end{figure}
-
-The monolith consists of tree main parts. The API that exposes the functionality to its users. The business logic which only handles the PDF Generation and the data layer which handles the communication with the database. The API was written with ASP.NET Core in which JWT was used to authenticate the user.
-\\
 \noindent
-The endpoints it exposes:
 
+The monolith exposes following web api endpoints:
 \begin{figure} [H]
  \begin{center}
     \includegraphics[width=0.8\linewidth]{img/Monolith_Swagger.png}
@@ -376,7 +373,7 @@ The endpoints it exposes:
  \label{examichMonolithSwagger}
 \end{figure}
 \noindent
-The most resource intense endpoint would be "/api/Exams/{examId}/PDF", since with this the PDF generation is triggered. It will render the PDF and send it as response back to the user.
+The most resource intense endpoint would be "/api/Exams/\{examId\}/PDF", since with this the PDF generation is triggered. It will render the PDF and send it as response back to the user.
 
 
 \subsection{Data Model}
@@ -417,7 +414,7 @@ This is the data model for the monolithic application. The blue tables are table
 
 
 \section{Performance Benchmark}
-This chapter will cover how the performance for the  monolith and microservice were tested.
+This chapter will cover how the performance for the monolith and microservice were tested.
 
 
 \chapter{Results}
