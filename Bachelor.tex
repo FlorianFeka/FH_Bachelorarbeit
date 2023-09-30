@@ -69,7 +69,7 @@
 %
 % Einträge für Deckblatt, Kurzfassung, etc.
 %
-\title{Comparison between Microservice and Monolithic Web API in a Cloud Environment}
+\title{Comparison between Microservice and Monolithic Web \ac{API} in a Cloud Environment}
 \author{Florian Feka}
 \studentnumber{1910257104}
 %\author{Titel Vorname Name, Titel\and{}Titel Vorname Name, Titel}
@@ -146,10 +146,10 @@
 % .. und hier beginnt die eigentliche Arbeit. Viel Erfolg beim Verfassen!
 %
 \chapter{Introduction}
-Companies nowadays have many options on how to provide their software product to their customers, and with this, many things to consider when choosing a hosting platform. Corporations can choose to deploy on-premise, handling everything from the software to maintaining servers or delegate some of that work to cloud providers. Applications can be deployed through Infrastructure as a Service (IaaS) \cite{microIaas} or platform as a Service (PaaS) \cite{redPaas} and have a chance to take advantage of other services provided by Cloud Providers, like auto-scaling, high availability, continuous delivery and more.
+Companies nowadays have many options on how to provide their software product to their customers, and with this, many things to consider when choosing a hosting platform. Corporations can choose to deploy on-premise, handling everything from the software to maintaining servers or delegate some of that work to cloud providers. Applications can be deployed through \ac{IaaS} \cite{microIaas} or \ac{PaaS} \cite{redPaas} and have a chance to take advantage of other services provided by Cloud Providers, like auto-scaling, high availability, continuous delivery and more.
 \\
 \\
-Most web applications are three-tiered consisting of a frontend, backend, and a database \cite{liu2005}. The frontend is where users interact with the application, accessing data through a web interface or graphical user interface (GUI), while the backend is responsible for processing user requests and generating responses. The database server is the data or backend tier of a web application and runs on database management software \cite{ibm3t}. Many of those applications face problems when migrating to the cloud since many architecture styles commonly used when developing web applications do not consider the ability to add/remove servers on demand and do not consider the option of multiple server instances running.
+Most web applications are three-tiered consisting of a frontend, backend, and a database \cite{liu2005}. The frontend is where users interact with the application, accessing data through a web interface or \ac{GUI}, while the backend is responsible for processing user requests and generating responses. The database server is the data or backend tier of a web application and runs on database management software \cite{ibm3t}. Many of those applications face problems when migrating to the cloud since many architecture styles commonly used when developing web applications do not consider the ability to add/remove servers on demand and do not consider the option of multiple server instances running.
 \\
 \\
 Monoliths are applications built in, often one, big code base \cite{migmonomicro}. There are variations since some monoliths are split according to their overarching responsibility. For example, a monolith that has one code base including the backend and frontend could be split into one app for the frontend and one app for the backend \cite{chllng}.
@@ -159,10 +159,10 @@ Microservices are separate, small, modular services that can be independently up
 
 
 \section{Goals and Scope}
-The main goal of this thesis is to compare the monolithic and microservice architectural web Application Program Interface (API) in a cloud environment. Cloud providers offer many options on how to build an application, whether by building the infrastructure and application or just the application and letting the cloud provider manage the infrastructure. This thesis revolves around the second option and poses the following question:
+The main goal of this thesis is to compare the monolithic and microservice architectural web \ac{API} in a cloud environment. Cloud providers offer many options on how to build an application, whether by building the infrastructure and application or just the application and letting the cloud provider manage the infrastructure. This thesis revolves around the second option and poses the following question:
 
 \begin{itemize}
-\item Does the Monolithic or Microservice Architecture benefit more from the PaaS offered by Cloud Providers?
+\item Does the Monolithic or Microservice Architecture benefit more from the \ac{PaaS} offered by Cloud Providers?
 \end{itemize}
 
 \noindent
@@ -193,12 +193,12 @@ In the following sections the main subjects of this bachelor thesis are summariz
 % TODO: fill
 
 \section{Monolith}
-Because it is simpler, monolithic architecture is the norm for beginning application development. An all-inclusive single unit called a monolith application is created and deployed \cite{comp}. As shown in Figure \ref{monolith}, a typical monolithic program comprises of a user interface (UI) layer, a business logic layer, and a data interface layer that interacts with the database. Development should begin with monolithic architecture as it speeds up the earliest stages of development \cite{chllng}.
+Because it is simpler, monolithic architecture is the norm for beginning application development. An all-inclusive single unit called a monolith application is created and deployed \cite{comp}. As shown in Figure \ref{monolith}, a typical monolithic program comprises of a \ac{UI} layer, a business logic layer, and a data interface layer that interacts with the database. Development should begin with monolithic architecture as it speeds up the earliest stages of development \cite{chllng}.
 \\
 Enterprise applications are often built in three pieces \cite{fow2014}:
 \begin{itemize}
-  \item A client-side user interface consisting of HTML, CSS and JavaScript that runs in a Web Browser
-  \item A server-side application which will handle HTTP Requests and business logic
+  \item A client-side user interface consisting of \ac{HTML}, \ac{CSS} and JavaScript that runs in a Web Browser
+  \item A server-side application which will handle \ac{HTTP} Requests and business logic
   \item A database which consists of tables, usually using a relational model
 \end{itemize}
 
@@ -211,7 +211,7 @@ Enterprise applications are often built in three pieces \cite{fow2014}:
 \end{figure}
 
 \noindent
-A monolithic application has all services and business logic in one code base, which is being developed on. The development team need to ensure when modifying services that other parts of the application do not break. Monolithic architectures are common in many applications due to their simplicity and ability to meet system requirements quickly while limiting the number of dependencies that must be satisfied at deployment time. For example, e-commerce applications tend to use monolithic architectures because they are relatively simple and can be deployed quickly to accelerate the time to market \cite{frommonotomicro}. However, as the system scales, the system becomes increasingly complex to maintain and troubleshoot. Dependency management becomes increasingly difficult, and managing releases becomes challenging as changes have to be made across multiple layers in the system. A monolithic architecture also introduces a single point of failure that can adversely impact the entire system if it fails \cite{vil2015}.
+A monolithic application has all services and business logic in one code base as displayed in Figure \ref{monolith}. The development team need to ensure when modifying services that other parts of the application do not break. Monolithic architectures are common in many applications due to their simplicity and ability to meet system requirements quickly while limiting the number of dependencies that must be satisfied at deployment time. For example, e-commerce applications tend to use monolithic architectures because they are relatively simple and can be deployed quickly to accelerate the time to market \cite{frommonotomicro}. However, as the system scales, the system becomes increasingly complex to maintain and troubleshoot. Dependency management becomes increasingly difficult, and managing releases becomes challenging as changes have to be made across multiple layers in the system. A monolithic architecture also introduces a single point of failure that can adversely impact the entire system if it fails \cite{vil2015}.
 
 %//TODO: explain more
 
@@ -225,13 +225,13 @@ A monolithic application has all services and business logic in one code base, w
 \end{figure}
 
 \noindent
-Microservices are an architectural style for building applications where each service performs a specific function and communicates with other services using asynchronous messaging. Each service typically exposes only a small set of its functionality via a web API. Microservices can bring benefits, but they also pose challenges, especially regarding security aspects such as authentication and authorization \cite{alm2022} . There are also challenges related to the delivery, deployment, governance, and interoperability of services when migrating from a service-oriented architecture (SOA) to microservices \cite{raj2021} . Researchers are exploring solutions to these challenges, such as the use of hybrid design patterns to promote resiliency and the enhancement of the saga pattern to resolve the lack of isolation issue \cite{ras2022, dar2022} .
+Microservices are an architectural style for building applications where each service performs a specific function and communicates with other services using asynchronous messaging. Each service typically exposes only a small set of its functionality via a web \ac{API}. Microservices can bring benefits, but they also pose challenges, especially regarding security aspects such as authentication and authorization \cite{alm2022} . There are also challenges related to the delivery, deployment, governance, and interoperability of services when migrating from a \ac{SOA} to microservices \cite{raj2021} . Researchers are exploring solutions to these challenges, such as the use of hybrid design patterns to promote resiliency and the enhancement of the saga pattern to resolve the lack of isolation issue \cite{ras2022, dar2022} .
 \\
 \\
-Microservices are often built using API-first approaches, where the API is designed and developed first, followed by the other services that use it. This approach enables developers to prototype and test the microservices in isolation before integrating them into the main application, making development and testing faster and more cost-effective \cite{alm2022} . Once a service is successfully deployed, it can be used in other contexts where it may be used to achieve additional benefits. The microservice architecture also enables selecting the technology stack per service, allowing for greater flexibility and scalability \cite{dar2022} . However, the microservice architecture poses challenges, especially regarding security aspects such as authentication and authorization. Researchers are exploring solutions to these challenges, such as the use of JWT \cite{alm2022} .
+Microservices are often built using \ac{API}-first approaches, where the \ac{API} is designed and developed first, followed by the other services that use it. This approach enables developers to prototype and test the microservices in isolation before integrating them into the main application, making development and testing faster and more cost-effective \cite{alm2022} . Once a service is successfully deployed, it can be used in other contexts where it may be used to achieve additional benefits. The microservice architecture also enables selecting the technology stack per service, allowing for greater flexibility and scalability \cite{dar2022} . However, the microservice architecture poses challenges, especially regarding security aspects such as authentication and authorization. Researchers are exploring solutions to these challenges, such as the use of \ac{JWT} \cite{alm2022} .
 \\
 \\
-Microservices are a recent trend where each service can be developed, tested and scaled independently, making it much faster to develop and deploy new versions or features with minimal downtime for users. On the other hand, a monolithic API approach is easier to maintain since it consists of a single process across the server instead of multiple processes that have to communicate over the network with each other \cite{pat2021}.
+Microservices are a recent trend where each service can be developed, tested and scaled independently, making it much faster to develop and deploy new versions or features with minimal downtime for users. On the other hand, a monolithic \ac{API} approach is easier to maintain since it consists of a single process across the server instead of multiple processes that have to communicate over the network with each other \cite{pat2021}.
 
 \section{Monolith vs Microservice}
 \begin{table}[!h]
@@ -251,32 +251,32 @@ Microservices are a recent trend where each service can be developed, tested and
 \section{The Cloud}
 By implementing DevOps practices in their organisations, companies can align IT operations with business goals and increase operational efficiency and agility. This is achieved by adopting new technologies like cloud computing, containerisation, microservices, and automation tools to speed up the development lifecycle and deliver high-quality products faster. Companies can for example reduce costs by renting IT infrastructure to support temporary required compute power \cite{qia2009}.
 
-\subsection{Infrastracture as a Service (IaaS)}
-IaaS solutions enable companies to build and deploy their own custom IT systems on the cloud without having to purchase and maintain any hardware or software. It enables them to focus on building their applications and business processes without worrying about the technical details related to the IT infrastructure. IaaS also offers a lot of flexibility in terms of scaling up or down the resources required for their workloads as and when needed. It is still required to manage the OS and the package's whole deployment process.
+\subsection{\ac{IaaS}}
+\ac{IaaS} solutions enable companies to build and deploy their own custom IT systems on the cloud without having to purchase and maintain any hardware or software. It enables them to focus on building their applications and business processes without worrying about the technical details related to the IT infrastructure. \ac{IaaS} also offers a lot of flexibility in terms of scaling up or down the resources required for their workloads as and when needed. It is still required to manage the OS and the package's whole deployment process.
 \\
 \\
-Cloud providers such as AWS, Microsoft Azure, Google Cloud Platform, IBM Cloud, or Oracle Cloud provide cloud infrastructure-as-a-service (IaaS) that allows businesses to set up virtual machines on a shared infrastructure to manage their applications and workloads. IaaS is a cloud service that provides virtualised computing resources (e.g. CPU, memory, storage and networking resources) on demand to users over the Internet. It is managed by the service provider using a cloud computing stack that consists of the underlying hardware, virtualisation software and the cloud management platform \cite{buy2019} .
+Cloud providers such as AWS, Microsoft Azure, Google Cloud Platform, IBM Cloud, or Oracle Cloud provide cloud \ac{IaaS} that allows businesses to set up virtual machines on a shared infrastructure to manage their applications and workloads. \ac{IaaS} is a cloud service that provides virtualised computing resources (e.g. CPU, memory, storage and networking resources) on demand to users over the Internet. It is managed by the service provider using a cloud computing stack that consists of the underlying hardware, virtualisation software and the cloud management platform \cite{buy2019} .
 
 
-\subsection{Platform as a Service (PaaS)}
-Platform as a Service (PaaS) is a cloud computing service that provides a platform for developers to build and deploy their applications without worrying about the underlying infrastructure or hardware resources. So the differences to IaaS is that with PaaS you do not have to worry about the underlying infrastructure.
+\subsection{\ac{PaaS}}
+\ac{PaaS} is a cloud computing service that provides a platform for developers to build and deploy their applications without worrying about the underlying infrastructure or hardware resources. So the differences to \ac{IaaS} is that with \ac{PaaS} you do not have to worry about the underlying infrastructure.
 \\
 \\
-The main benefits of using PaaS include the following:
+The main benefits of using \ac{PaaS} include the following:
 
 \begin{itemize}
-\item Quick Setup and Deployment: With PaaS, developers no longer need to concern themselves with setting up and maintaining an IT infrastructure for running their applications, as all of this is done for them by the service provider. They can simply sign up for the service and start developing their application immediately and deploy it to the production environment by simply pushing a button without any further configuration or maintenance required. This can save a lot of time and effort on the developer's part so that they can focus on developing the application rather than troubleshooting technical issues \cite{law2008}.
+\item Quick Setup and Deployment: With \ac{PaaS}, developers no longer need to concern themselves with setting up and maintaining an IT infrastructure for running their applications, as all of this is done for them by the service provider. They can simply sign up for the service and start developing their application immediately and deploy it to the production environment by simply pushing a button without any further configuration or maintenance required. This can save a lot of time and effort on the developer's part so that they can focus on developing the application rather than troubleshooting technical issues \cite{law2008}.
 
 \item Cost Effective: The acquisition and management of expensive hardware and software resources for running applications are no longer essential with the availability of cloud services. These services can significantly reduce the costs involved in maintaining such resources, which makes it a more cost-efficient alternative for organizations. Moreover, developers can utilize this platform in creating their software without requiring substantial infrastructure investments. \cite{gai2014}.
 
 \item High Availability: To achieve high availability of applications and reduce costs, it is beneficial to scale them up or down depending on the required load. With this service, users can conveniently adjust their applications to match current workloads and thereby enjoy improved efficiency. They can easily downsize when the application is not needed, and upscale when a surge in demand occurs without additional costs. Moreover, the service accommodates diverse business requirements such as user analytics, data storage needs and available bandwidth. By utilising this method, developers can enhance the operation and capability of their software with regards to varying categories of consumers\cite{IaasHigh}.
 
-\item Scalability: PaaS allows developers to easily scale their applications to accommodate growing workload requirements without making additional investments \cite{law2008}. This is mainly achieved by integrating added resources that can be scaled up along with the workloads. Conversely, scaling down is equally straightforward when operational costs reduction and minimizing storage requirements are deemed necessary.
+\item Scalability: \ac{PaaS} allows developers to easily scale their applications to accommodate growing workload requirements without making additional investments \cite{law2008}. This is mainly achieved by integrating added resources that can be scaled up along with the workloads. Conversely, scaling down is equally straightforward when operational costs reduction and minimizing storage requirements are deemed necessary.
 \end{itemize}
 
 
 \section{Docker}
-Docker is an open-source platform designed to automate application containers on Linux-based operating systems. A Docker Container is lightweight, portable and isolated application packaging; developers can package an application and all its dependencies into a single file, known as a "container", that runs anywhere. Multiple containers may also be clustered together under one namespace allowing multiple processes running independently to share namespaces if needed. In addition, these lightweight files can easily move between development environments and production environments and be linked together into powerful apps \cite{rad2017}.
+Docker is an open-source platform designed to automate application containers on a primarily Linux-based operating system. A Docker Container is lightweight, portable and isolated application packaging; developers can package an application and all its dependencies into a single file, known as a "container", that runs anywhere. Multiple containers may also be clustered together under one namespace allowing multiple processes running independently to share namespaces if needed. In addition, these lightweight files can easily move between development environments and production environments and be linked together into powerful apps \cite{rad2017}.
 \\
 \\
 The key benefits of using Docker Containers include the following:
@@ -284,9 +284,9 @@ The key benefits of using Docker Containers include the following:
 \begin{itemize}
 \item Lightweight: Docker containers are generally smaller compared to a virtual machine. This means multiple applications can run on a single server without compromising performance \cite{vmwcovsvm}.
 
-\item Portable: Docker containers are highly portable, which facilitates moving applications from development to production or even between different servers \cite{rad2017} . This is especially useful for DevOps teams as they can use the same containers in different environments, such as development and staging or production and testing.
+\item Portable: Docker containers are highly portable, which facilitates moving applications from development to production or even between different servers \cite{rad2017}. This is especially useful for DevOps teams as they can use the same containers in different environments, such as development and staging or production and testing.
 
-\item Isolated: Docker containers are completely independent from one another on a system, reducing risk for vulnerabilities to affect multiple containers at once \cite{com2016} . Furthermore, this approach also makes it much easier to have multiple versions of runtimes or compilers installed - something virtual machines could make much harder to manage.
+\item Isolated: Docker containers are completely independent from one another on a system, reducing risk for vulnerabilities to affect multiple containers at once \cite{com2016}. Furthermore, this approach also makes it much easier to have multiple versions of runtimes or compilers installed - something virtual machines could make much harder to manage.
 
 \item Easy to Manage: Docker containers are designed to minimise management overhead so developers can focus on building great apps instead of managing infrastructure. This is achieved by giving the developer fine-grained control over container resources and providing simple tools for managing them \cite{rad2017}.
 
@@ -300,61 +300,73 @@ Due to these advantages, Docker containers have quickly become the industry stan
 Kubernetes is open-source software for automating deployment, scaling and managing containerised applications. It provides a scalable way to run containerised applications on any public cloud or on-premise infrastructure. Kubernetes is workload agnostic, meaning that it can support multiple types of services without requiring the developers to re-architect the application for Kubernetes \cite{luk2018}.
 \\
 \\
-Kubernetes features include resource provisioning, scalability, load balancing, service discovery, multi-cluster management, auto-scaling, etc. It also provides a Web API for managing resources and a web-based dashboard for end users to monitor the status of the cluster and the resources in it. These features enable Kubernetes to control and monitor many containers simultaneously in a dynamic environment. This enables it to be used as an Infrastructure as a Service (IaaS) platform for controlling and running applications in the cloud. It can also be used for development and testing environments as it can dynamically scale resources to meet user demand without deploying new servers each time additional resources are required \cite{kubernetes}.
+Kubernetes features include resource provisioning, scalability, load balancing, service discovery, multi-cluster management, auto-scaling, etc. It also provides a Web \ac{API} for managing resources and a web-based dashboard for end users to monitor the status of the cluster and the resources in it. These features enable Kubernetes to control and monitor many containers simultaneously in a dynamic environment. This enables it to be used as an \ac{IaaS} platform for controlling and running applications in the cloud. It can also be used for development and testing environments as it can dynamically scale resources to meet user demand without deploying new servers each time additional resources are required \cite{kubernetes}.
 
 \section{.NET Core}
 .NET Core is a free, open-source, cross-platform development platform maintained by Microsoft \cite{dotnetintro}. It is a new version of the .NET Framework and is built on a high-performance platform \cite{dotnetintro}. It allows developers to build and run applications on Windows, Linux, and macOS. ASP.NET Core is the open-source and cross-platform version of ASP.NET, a popular web development framework for building web apps on the .NET platform \cite{dotnetaspcore}.
 
 \subsection{ASP.NET Core}
-ASP.NET Core is the open-source version of ASP.NET, a popular web development framework for building web apps on the .NET platform. ASP.NET Core runs on Windows, Linux, macOS, and Docker. It is designed to allow runtime components, APIs, compilers, and languages to evolve quickly while still providing a stable and supported platform to keep apps running. Multiple versions of ASP.NET Core can exist side by side on the same server, meaning one app can adopt the latest version while other apps keep running on the version they were tested on \cite{dotnetaspcore}.
+ASP.NET Core is the open-source version of ASP.NET, a popular web development framework for building web apps on the .NET platform. ASP.NET Core runs on Windows, Linux, macOS, and Docker. It is designed to allow runtime components, \ac{API}s, compilers, and languages to evolve quickly while still providing a stable and supported platform to keep apps running. Multiple versions of ASP.NET Core can exist side by side on the same server, meaning one app can adopt the latest version while other apps keep running on the version they were tested on \cite{dotnetaspcore}.
 \\
 \\
-ASP.NET Core is used for developing professional web applications. It enables developers to construct modern, cross-platform apps using .NET Core technology. Solution architecture in ASP.Net Core can also accommodate for multi-domain management within one technical solution, thus serving multiple domains within an organization with one streamlined technical solution. This solution incorporates multiple design patterns such as Repository, Unit of Work and Inversion of Controls to address common developer problems while increasing business productivity. Furthermore, ASP.NET Core is used for web API development; additionally organic benchmarks were set up between Java EE and ASP.NET Core runtimes to evaluate performance characteristics; Kestrel web server was employed to implement its version of the solution for ASP.NET Core implementation \cite{kro2018}.
+ASP.NET Core is used for developing professional web applications. It enables developers to construct modern, cross-platform apps using .NET Core technology. Solution architecture in ASP.Net Core can also accommodate for multi-domain management within one technical solution, thus serving multiple domains within an organization with one streamlined technical solution. This solution incorporates multiple design patterns such as Repository, Unit of Work and Inversion of Controls to address common developer problems while increasing business productivity. Furthermore, ASP.NET Core is used for web \ac{API} development; additionally organic benchmarks were set up between Java EE and ASP.NET Core runtimes to evaluate performance characteristics; Kestrel web server was employed to implement its version of the solution for ASP.NET Core implementation \cite{kro2018}.
 
-\section{Web API}
-Web API is a set of protocols and tools used for the creation of software applications. It outlines how software components should interact and enables communication among various software systems. Web APIs allow access to data and functionality of an online service or app, enabling developers to integrate systems more easily as well as build new apps which interact with existing ones \cite{soh2015}.
+\section{Web \ac{API}}
+Web \ac{API} is a set of protocols and tools used for the creation of software applications. It outlines how software components should interact and enables communication among various software systems. Web \ac{API}s allow access to data and functionality of an online service or app, enabling developers to integrate systems more easily as well as build new apps which interact with existing ones \cite{soh2015}.
 \\
 \\
-Web APIs allow users to make data requests to servers and receive responses in specific formats like JSON or XML \cite{tan2016}. They are accessible using HTTP requests from any programming language or platform supporting HTTP, making Web APIs ideal for tasks such as retrieving, updating, and performing calculations.
+Web \ac{API}s allow users to make data requests to servers and receive responses in specific formats like JSON or XML \cite{tan2016}. They are accessible using \ac{HTTP} requests from any programming language or platform supporting \ac{HTTP}, making Web \ac{API}s ideal for tasks such as retrieving, updating, and performing calculations.
 \\
 \\
-Web APIs have become ubiquitous across industries, from e-commerce and social media to finance2. Furthermore, they're widely employed within the Internet of Things (IoT) to enable communication between devices and systems \cite{tan2016}. Web APIs play an essential role in developing modern web apps and services that interact seamlessly with one another while offering users a positive user experience.
+Web \ac{API}s have become ubiquitous across industries, from e-commerce and social media to finance2. Furthermore, they're widely employed within the Internet of Things (IoT) to enable communication between devices and systems \cite{tan2016}. Web \ac{API}s play an essential role in developing modern web apps and services that interact seamlessly with one another while offering users a positive user experience.
 
-\section{JWT}
-The JSON Web Token (JWT) is widely recognized as the de facto standard for securely transmitting data in the form of a JSON object between multiple parties. It provides a concise and self-contained way for exchanging information that is trustworthy due to its digital signature \cite{akanajwt}. JWTs can be signed using either a secret HMAC algorithm or through RSA or ECDSA using a public/private key pair. These tokens are employed in various scenarios such as authorization, single sign-on, and data exchange \cite{oauthjwt}.
+\section{\ac{JWT}}
+The \ac{JWT} is widely recognized as the de facto standard for securely transmitting data in the form of a JSON object between multiple parties. It provides a concise and self-contained way for exchanging information that is trustworthy due to its digital signature \cite{akanajwt}. \ac{JWT}s can be signed using either a secret HMAC algorithm or through RSA or ECDSA using a public/private key pair. These tokens are employed in various scenarios such as authorization, single sign-on, and data exchange \cite{oauthjwt}.
 \\
 \\
-Authorization is one prevalent application where JWTs hold significant importance. Once users successfully log into their accounts, subsequent requests carry the JWT token allowing them access to authorized routes, services, and resources associated with that specific token. Another noteworthy functionality heavily reliant upon JWTs is single sign-on since these tokens possess minimal overhead and offer seamless integration across different domains \cite{jwt, oauthjwt}.
+Authorization is one prevalent application where \ac{JWT}s hold significant importance. Once users successfully log into their accounts, subsequent requests carry the \ac{JWT} token allowing them access to authorized routes, services, and resources associated with that specific token. Another noteworthy functionality heavily reliant upon \ac{JWT}s is single sign-on since these tokens possess minimal overhead and offer seamless integration across different domains \cite{jwt, oauthjwt}.
 \\
 \\
-Comprised typically of three components - header, payload, and signature - each part plays an essential role within the architecture of JWTs. The header delineates which cryptographic algorithm was employed in generating the signature whereas the payload encompasses claims or pertinent information encapsulated within a JSON object format \cite{superjwt}.
+Comprised typically of three components - header, payload, and signature - each part plays an essential role within the architecture of \ac{JWT}s. The header delineates which cryptographic algorithm was employed in generating the signature whereas the payload encompasses claims or pertinent information encapsulated within a JSON object format \cite{superjwt}.
 
 \section{Database}
 A database is used for storing, fetching and manipulating data. There are multiple types of databases which dictate the structure of the data model. The two biggest destictions are between relational and non-relational databases. This thesis uses Microsoft SQL Server which is a relational database \cite{whatmsSQLdb}, meaning it has a relational model which consits of a collection of tables which are made out of rows, columns and could potentially have relations \cite{oraclereldb, ibmreldb}.
 
+\section{Object-Relation Mapper}
+% TODO: fill
+\subsection{EntitiyFramework Core}
+% TODO: fill
+
 \section{Swagger}
-Swagger is an open-source set of rules, specifications, and tools for developing and documenting Web APIs. It enables developers to easily create interactive machine- and human-readable API documentation. Swagger also offers an editor for OpenAPI specification files to generate interactive API documentation quickly \cite{javapoint}. Furthermore, Swagger was built around OpenAPI spec files, consisting of three components - Swagger Editor, Swagger UI, and Codegen.
+Swagger is an open-source set of rules, specifications, and tools for developing and documenting Web \ac{API}s. It enables developers to easily create interactive machine- and human-readable \ac{API} documentation. Swagger also offers an editor for OpenAPI specification files to generate interactive \ac{API} documentation quickly \cite{javapoint}. Furthermore, Swagger was built around OpenAPI spec files, consisting of three components - Swagger Editor, Swagger UI, and Codegen.
 \\
 \\
-The Swagger Editor is a browser-based editor where developers can write and edit API documentation and OpenAPI specifications. It can be used directly through the browser, downloaded to run locally, or used as part of SwaggerHub \cite{hubspot}. Similarly, Swagger UI generates interactive documentation from OpenAPI specifications, enabling users to visualize and interact with its resources without having any of its implementation logic in place. Lastly, Swagger Codegen generates server stubs and client libraries for APIs across many programming languages \cite{swagger}.
+The Swagger Editor is a browser-based editor where developers can write and edit \ac{API} documentation and OpenAPI specifications. It can be used directly through the browser, downloaded to run locally, or used as part of SwaggerHub \cite{hubspot}. Similarly, Swagger UI generates interactive documentation from OpenAPI specifications, enabling users to visualize and interact with its resources without having any of its implementation logic in place. Lastly, Swagger Codegen generates server stubs and client libraries for \ac{API}s across many programming languages \cite{swagger}.
 \\
 \\
-Swagger allows users to build, document, test and consume web services. It supports both top-down and bottom-up approaches for API development; with top-down, or design-first development approaches you can design an API prior to writing any code; while with bottom-up or code-first approaches Swagger takes the code written for an API and generates its documentation. Standardizing API writing processes with Swagger helps keep track of things which should ideally be included when designing APIs from scratch \cite{scaleyourapp}.
+Swagger allows users to build, document, test and consume web services. It supports both top-down and bottom-up approaches for \ac{API} development; with top-down, or design-first development approaches you can design an \ac{API} prior to writing any code; while with bottom-up or code-first approaches Swagger takes the code written for an \ac{API} and generates its documentation. Standardizing \ac{API} writing processes with Swagger helps keep track of things which should ideally be included when designing \ac{API}s from scratch \cite{scaleyourapp}.
 
 \section{Load Testing}
 Load Testing is used to place a load on an application to ensure the application can handle the sudden influx of requests and remain stable. Load testing can be achieved through repeated, simultaneous requests. It reveales possible software design flaws or bottle necks within the application \cite{loadtest}.
 \subsection{k6}
-K6 is an load testing tool which helps with performance testing Web APIs and other Interfaces \cite{k6doc}. K6 is going to be used to load test the monolith and microservice.
+K6 is an load testing tool which helps with performance testing Web \ac{API}s and other Interfaces \cite{k6doc}. K6 is going to be used to load test the monolith and microservice.
 
 \clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%   TODO: Applied Methods  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Applied Methods}
-The project created for this thesis called "Examich" is for students to create, manage and share practice exams. This service also offers the option to generate a PDF Version of the practice exams. Since this thesis focuses on the API the frontend for this project will be skipped. The application was written as a monolith and then broken down into three microsercvices. The following sections will present how each version was implemented and how those were load tested.
+The project created for this thesis called "Examich" is for students to create, manage and share practice exams. This service also offers the option to generate a PDF Version of the practice exams which will simulate a resource intensive action. Since this thesis focuses on the \ac{API} the frontend for this project will be skipped. The application was written as a monolith and then broken down into three microsercvices. The following sections will present how both version was implemented and how those were load tested.
+
+\section{General Overlap}
+Since the Microservice was created through splitting the Monolith many aspects of the projects remained the same so to not list those facts twice this section will present the similarities.
+\\
+\noindent
+Both projects were written in C\# using .NET 5 utilising the QuestPDF library for generating the PDFs and storing data in the Microsoft SQL Server 2019.
 
 \section{Monolith}
-This Section will explain how the Monolith was implemented and how the tools mentiond above were used.
 
 \subsection{Architecture \& Implementation}
-The monolith consists of tree main parts as shown in Figure \ref{examichMonolith}. The API that exposes the functionality to its users. The business logic which handles the PDF Generation and passes on basic Create, Read, Update and Delete operations to the data interface. The data interface which handles the communication with the database. The API was written with ASP.NET Core in which JWT was used to authenticate the user in each request.
+The monolith consists of tree main parts as shown in Figure \ref{examichMonolith}. The \ac{API} that exposes the functionality to its users. The business logic which handles the PDF Generation and passes on basic Create, Read, Update and Delete operations to the data interface. The data interface which handles the communication with the database. The \ac{API} was written with ASP.NET Core in which \ac{JWT} was used to authenticate the user in each request.
+
 \begin{figure} [H]
  \begin{center}
     \includegraphics[width=0.6\linewidth]{img/ExamichMonolith.png}
@@ -362,19 +374,32 @@ The monolith consists of tree main parts as shown in Figure \ref{examichMonolith
  \caption{Examich Monolith Architecture}
  \label{examichMonolith}
 \end{figure}
-\noindent
 
-The monolith exposes following web api endpoints:
-\begin{figure} [H]
- \begin{center}
-    \includegraphics[width=0.8\linewidth]{img/Monolith_Swagger.png}
- \end{center}
- \caption{Examich Monolith Swagger}
- \label{examichMonolithSwagger}
-\end{figure}
 \noindent
-The most resource intense endpoint would be "/api/Exams/\{examId\}/PDF", since with this the PDF generation is triggered. It will render the PDF and send it as response back to the user.
-
+The monolith exposes following web \ac{API} endpoints which will be load tested:
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+        \ac{HTTP} Verb & URL \\ \hline
+        POST & /api/Auth/Login \\ \hline
+        GET & /api/Users/Search \\ \hline
+        GET & /api/Exams/User \\ \hline
+        GET & /api/Questions/Exam/\{examId\} \\ \hline
+        GET & /api/Exams/\{examId\}/PDF \\ \hline
+    \end{tabular}
+ \label{examichMonolithEndpoints}
+\end{table}
+% \begin{figure} [H]
+%  \begin{center}
+%     \includegraphics[width=0.8\linewidth]{img/Monolith_Swagger.png}
+%  \end{center}
+%  \caption{Examich Monolith Swagger}
+%  \label{examichMonolithSwagger}
+% \end{figure}
+\noindent
+\\
+The most resource intensive endpoint would be "/api/Exams/\{examId\}/PDF", since with this the PDF generation is triggered. It will render the PDF and send it as response back to the user. The other endpoints are only for modifying data on the exams so mostly light on the resources.
 
 \subsection{Data Model}
 
@@ -386,7 +411,7 @@ The most resource intense endpoint would be "/api/Exams/\{examId\}/PDF", since w
  \label{datamodel}
 \end{figure}
 
-This is the data model for the monolithic application. The blue tables are tables generated by the Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext, the grey one is generated be EntitiyFrameworkCore to keep track of the migrations and the green ones were created for the project. The important tables are the green ones. Every User had zero or more Exams, every Exam had zero or more Questions and every Question had zero or more Answers. A pretty simple data structure.
+Figure \ref{datamodel} presents the data model for the monolithic application. The blue tables are tables generated by the Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext used for user management and authentication, the grey one is generated by EntitiyFrameworkCore to keep track of the migrations and the green ones were specifically created for the project. Every User has zero or more Exams, every Exam has zero or more Questions and every Question has zero or more Answers.
 
 
 \section{Microservice}
@@ -435,5 +460,24 @@ This chapter will cover how the performance for the monolith and microservice we
 % Das Abbildungsverzeichnis
 \listoffigures
 \clearpage
+
+\listoftables
+\clearpage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\listacroname}
+\chapter*{\listacroname}
+\begin{acronym}[XXXXX]
+    \acro{API}[API]{Application Programming Interface}
+    \acro{IaaS}[IaaS]{Infrastracture as a Service}
+    \acro{PaaS}[PaaS]{Platform as a Service}
+    \acro{UI}[UI]{User Interface}
+    \acro{GUI}[GUI]{Graphical User Interface}
+    \acro{HTML}[HTML]{HyperText Markup Language}
+    \acro{CSS}[CSS]{Cascading Style Sheet}
+    \acro{SOA}[SOA]{Service-oriented architecture}
+    \acro{HTTP}[HTTP]{Hypertext Transfer Protocol}
+    \acro{JWT}[JWT]{JSON Web Token}
+\end{acronym}
 
 \end{document}
