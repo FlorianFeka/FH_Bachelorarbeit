@@ -5,4 +5,4 @@ rm "$FILENAME.pdf"; rm "$FILENAME.aux"; rm "$FILENAME.bbl"; rm "$FILENAME.blg"; 
 sleep 2
 pdflatex "$FILENAME.tex" && sleep 8 && bibtex "$FILENAME.aux" && sleep 8 && pdflatex "$FILENAME.tex" && sleep 8 && pdflatex "$FILENAME.tex"
 sleep 2
-rm "$FILENAME.aux"; rm "$FILENAME.bbl"; rm "$FILENAME.blg"; rm "$FILENAME.lof"; rm "$FILENAME.log"; rm "$FILENAME.toc"
+rm "$FILENAME.aux"; rm "$FILENAME.bbl"; rm "$FILENAME.blg"; rm "$FILENAME.lof"; rm "$FILENAME.log"; rm "$FILENAME.toc"; rm "$FILENAME.lot"

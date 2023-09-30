@@ -74,7 +74,7 @@
 \studentnumber{1910257104}
 %\author{Titel Vorname Name, Titel\and{}Titel Vorname Name, Titel}
 %\studentnumber{XXXXXXXXXXXXXXX\and{}XXXXXXXXXXXXXXX}
-\supervisor{Marvin Kosmider, BSc.}
+\supervisor{Marvin Kosmider, MSc.}
 %\supervisor[Begutachter]{Titel Vorname Name, Titel}
 %\supervisor[Begutachterin]{Titel Vorname Name, Titel}
 %\secondsupervisor{Titel Vorname Name, Titel}
@@ -246,6 +246,7 @@ Microservices are a recent trend where each service can be developed, tested and
         Deployment & app deployed as single unit & every microservice needs to be deployed independently \\ \hline
         Scale & need to scale entire app & can scale individual microservices \\ \hline
     \end{tabular}
+    \caption{Comparison between Monolithic Architecture and Microservice Architecture}
 \end{table}
 
 \section{The Cloud}
@@ -300,7 +301,9 @@ Due to these advantages, Docker containers have quickly become the industry stan
 Kubernetes is open-source software for automating deployment, scaling and managing containerised applications. It provides a scalable way to run containerised applications on any public cloud or on-premise infrastructure. Kubernetes is workload agnostic, meaning that it can support multiple types of services without requiring the developers to re-architect the application for Kubernetes \cite{luk2018}.
 \\
 \\
-Kubernetes features include resource provisioning, scalability, load balancing, service discovery, multi-cluster management, auto-scaling, etc. It also provides a Web \ac{API} for managing resources and a web-based dashboard for end users to monitor the status of the cluster and the resources in it. These features enable Kubernetes to control and monitor many containers simultaneously in a dynamic environment. This enables it to be used as an \ac{IaaS} platform for controlling and running applications in the cloud. It can also be used for development and testing environments as it can dynamically scale resources to meet user demand without deploying new servers each time additional resources are required \cite{kubernetes}.
+Kubernetes features include resource provisioning, scalability, load balancing, service discovery, auto-scaling, etc. It also provides a Web \ac{API} for managing resources and a web-based dashboard for end users to monitor the status of the cluster and the resources in it. These features enable Kubernetes to control and monitor many containers simultaneously in a dynamic environment. It can also be used for development and testing environments as it can dynamically scale resources to meet user demand without deploying new servers each time additional resources are required \cite{kubernetes}.
+
+
 
 \section{.NET Core}
 .NET Core is a free, open-source, cross-platform development platform maintained by Microsoft \cite{dotnetintro}. It is a new version of the .NET Framework and is built on a high-performance platform \cite{dotnetintro}. It allows developers to build and run applications on Windows, Linux, and macOS. ASP.NET Core is the open-source and cross-platform version of ASP.NET, a popular web development framework for building web apps on the .NET platform \cite{dotnetaspcore}.
@@ -360,12 +363,13 @@ The project created for this thesis called "Examich" is for students to create, 
 Since the Microservice was created through splitting the Monolith many aspects of the projects remained the same so to not list those facts twice this section will present the similarities.
 \\
 \noindent
-Both projects were written in C\# using .NET 5 utilising the QuestPDF library for generating the PDFs and storing data in the Microsoft SQL Server 2019.
+Both projects were written in C\# using .NET 5 utilising the QuestPDF library for generating the PDFs and storing data in the Microsoft SQL Server 2019. \ac{JWT} was used in both projects to handle authentication.
 
 \section{Monolith}
+The following subsections will describe the architecture of the Monolith and outline the implementation.
 
 \subsection{Architecture \& Implementation}
-The monolith consists of tree main parts as shown in Figure \ref{examichMonolith}. The \ac{API} that exposes the functionality to its users. The business logic which handles the PDF Generation and passes on basic Create, Read, Update and Delete operations to the data interface. The data interface which handles the communication with the database. The \ac{API} was written with ASP.NET Core in which \ac{JWT} was used to authenticate the user in each request.
+The monolith consists of tree main parts as shown in Figure \ref{examichMonolith}. The \ac{API} that exposes the functionality to its users. The business logic which handles basic Create, Read, Update and Delete operations and generates PDFs. The data interface which handles the communication with the database. A seed of data was defined in the data interface for later to be queried by the load test.
 
 \begin{figure} [H]
  \begin{center}
@@ -377,6 +381,7 @@ The monolith consists of tree main parts as shown in Figure \ref{examichMonolith
 
 \noindent
 The monolith exposes following web \ac{API} endpoints which will be load tested:
+
 \begin{table}[!ht]
     \centering
     \begin{tabular}{|l|l|}
@@ -388,18 +393,16 @@ The monolith exposes following web \ac{API} endpoints which will be load tested:
         GET & /api/Questions/Exam/\{examId\} \\ \hline
         GET & /api/Exams/\{examId\}/PDF \\ \hline
     \end{tabular}
+ \caption{Relevant Examich Monolith Endpoints}
  \label{examichMonolithEndpoints}
 \end{table}
-% \begin{figure} [H]
-%  \begin{center}
-%     \includegraphics[width=0.8\linewidth]{img/Monolith_Swagger.png}
-%  \end{center}
-%  \caption{Examich Monolith Swagger}
-%  \label{examichMonolithSwagger}
-% \end{figure}
 \noindent
 \\
 The most resource intensive endpoint would be "/api/Exams/\{examId\}/PDF", since with this the PDF generation is triggered. It will render the PDF and send it as response back to the user. The other endpoints are only for modifying data on the exams so mostly light on the resources.
+\\
+\\
+\noindent
+The application is packaged into a container image using a Dockerfile defining how to build the image which then will be used to create the container running the application. To deploy the application on Kubernetes the structure must be defined in a YAML File. That YAML File defines the Image Kubernetes should run is and on which port the application should be exposed.
 
 \subsection{Data Model}
 
@@ -415,8 +418,17 @@ Figure \ref{datamodel} presents the data model for the monolithic application. T
 
 
 \section{Microservice}
+The following subsections will describe the architecture of the Microservice and outline the implementation.
 
 \subsection{Architecture \& Implementation}
+The Monolith was split into the three following Microservices as seen in Figure \ref{examichMicroservice}:
+
+\begin{itemize}
+\item User Service which handels, Login, Registration and queries regarding user data
+\item Exam Service which handels, Create, Read, Update and Delete operations regarding Exams, Questions and Answers
+\item PDF Service which handles generating a PDF out of one Exam
+\end{itemize}
+
 \begin{figure} [H]
  \begin{center}
     \includegraphics[width=1\linewidth]{img/ExamichMicroserviceArchitecture.png}
@@ -424,9 +436,16 @@ Figure \ref{datamodel} presents the data model for the monolithic application. T
  \caption{Examich Microservice Architecture}
  \label{examichMicroservice}
 \end{figure}
+\noindent
+\\
+All service are isolated and run independently from another, one service may still need the other. The User Service is completely isolated and also needs no other service to function as for the Exam Service. The PDF Service on the other hand needs data from the Exam Service to generate a PDF, so there is a dependency on the Exam Service. If the Exam Service is unavailable the PDF service would also fail but the User Service would still function. All endpoints remain the same as in Table \ref{examichMonolithEndpoints} except for the endpoint that handels the generating of the PDF which is under "/api/File/\{examId\}/PDF".
+\\
+\\
+\noindent
+The microsercvices like the monolith are packaged into container images and then deployed to Kubernetes with the differences that in Kubernetes there are now have three Services. To expose those three services through the same Port  an Ingress is defined which forwards various routes to the appropriate Service.
 
 \subsection{Data Model}
-
+The Data Model for the Microservice is almost the same as for the Monolith in Figure \ref{datamodel} with the distinction that the data model was split in two. Two of the three services use a seperate database with data only relevant for the service. Figure \ref{datamodelmicroservice} displayes that split with one database used for the User Service including all User related tables and one database for the Exam Service including all Exam related tables.
 \begin{figure} [H]
  \begin{center}
     \includegraphics[width=1\linewidth]{img/ExamichMicroserviceDataModel.png}
@@ -435,16 +454,26 @@ Figure \ref{datamodel} presents the data model for the monolithic application. T
  \label{datamodelmicroservice}
 \end{figure}
 
-
-
-
 \section{Performance Benchmark}
-This chapter will cover how the performance for the monolith and microservice were tested.
+This chapter will cover how the performance with k6 were executed and what measurements were taken. Load tests with k6 are simulated through \ac{VU}s which makes it very CPU intensive so a VM with many cores is needed. As mentioned in the previous section following endpoints of both application are being tested:
 
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+        \ac{HTTP} Verb & URL \\ \hline
+        POST & /api/Auth/Login \\ \hline
+        GET & /api/Users/Search \\ \hline
+        GET & /api/Exams/User \\ \hline
+        GET & /api/Questions/Exam/\{examId\} \\ \hline
+        GET & (Monolith only) /api/Exams/\{examId\}/PDF \\ \hline
+        GET & (Microservice only) /api/File/\{examId\}/PDF \\ \hline
+    \end{tabular}
+ \caption{Endpoints subject to load tests}
+ \label{loadTestEndpoints}
+\end{table}
 
-\chapter{Results}
-
-\chapter{Discussion}
+\chapter{Discussion \& Results}
 
 
 \chapter{Conclusion}
@@ -478,6 +507,7 @@ This chapter will cover how the performance for the monolith and microservice we
     \acro{SOA}[SOA]{Service-oriented architecture}
     \acro{HTTP}[HTTP]{Hypertext Transfer Protocol}
     \acro{JWT}[JWT]{JSON Web Token}
+    \acro{VU}[VU]{Virtual User}
 \end{acronym}
 
 \end{document}
