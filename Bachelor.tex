@@ -27,6 +27,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{float}
+\usepackage{pgfplots}
 %
 % Bitte in der folgenden Zeile den Zitierstandard festlegen
 \newcommand{\FHTWCitationType}{IEEE} % IEEE oder HARVARD möglich - wenn Sie zwischen IEEE und HARVARD wechseln, bitte die temorären Dateien (aux, bbl, ...) löschen
@@ -260,7 +261,7 @@ Cloud providers such as AWS, Microsoft Azure, Google Cloud Platform, IBM Cloud, 
 
 
 \subsection{\ac{PaaS}}
-\ac{PaaS} is a cloud computing service that provides a platform for developers to build and deploy their applications without worrying about the underlying infrastructure or hardware resources. So the differences to \ac{IaaS} is that with \ac{PaaS} you do not have to worry about the underlying infrastructure.
+\ac{PaaS} is a cloud computing service that provides a platform for developers to build and deploy their applications without worrying about the underlying infrastructure or hardware resources. So the differences to \ac{IaaS} is that with \ac{PaaS} users do not have to worry about the underlying infrastructure.
 \\
 \\
 The main benefits of using \ac{PaaS} include the following:
@@ -347,7 +348,7 @@ Swagger is an open-source set of rules, specifications, and tools for developing
 The Swagger Editor is a browser-based editor where developers can write and edit \ac{API} documentation and OpenAPI specifications. It can be used directly through the browser, downloaded to run locally, or used as part of SwaggerHub \cite{hubspot}. Similarly, Swagger UI generates interactive documentation from OpenAPI specifications, enabling users to visualize and interact with its resources without having any of its implementation logic in place. Lastly, Swagger Codegen generates server stubs and client libraries for \ac{API}s across many programming languages \cite{swagger}.
 \\
 \\
-Swagger allows users to build, document, test and consume web services. It supports both top-down and bottom-up approaches for \ac{API} development; with top-down, or design-first development approaches you can design an \ac{API} prior to writing any code; while with bottom-up or code-first approaches Swagger takes the code written for an \ac{API} and generates its documentation. Standardizing \ac{API} writing processes with Swagger helps keep track of things which should ideally be included when designing \ac{API}s from scratch \cite{scaleyourapp}.
+Swagger allows users to build, document, test and consume web services. It supports both top-down and bottom-up approaches for \ac{API} development; with top-down, or design-first approaches developers can design an \ac{API} prior to writing any code; while with bottom-up or code-first approaches Swagger takes the code written for an \ac{API} and generates its documentation. Standardizing \ac{API} writing processes with Swagger helps keep track of things which should ideally be included when designing \ac{API}s from scratch \cite{scaleyourapp}.
 
 \section{Load Testing}
 Load Testing is used to place a load on an application to ensure the application can handle the sudden influx of requests and remain stable. Load testing can be achieved through repeated, simultaneous requests. It reveales possible software design flaws or bottle necks within the application \cite{loadtest}.
@@ -473,7 +474,133 @@ This chapter will cover how the performance with k6 were executed and what measu
  \label{loadTestEndpoints}
 \end{table}
 
+\noindent
+k6 will ramp up to 300 \ac{VU}s in one minute and after another minute take two minutes to ramp up to 900 \ac{VU}s in which k6 will remain for 3 minutes and then ramp down the same way it ramped down. The whole tests needs 10 minutes per endpoint.
+
 \chapter{Discussion \& Results}
+After executing the load tests the data compiled and visualized as graphs for this thesis are the total requests done in the 9 minutes per endpoint and the duration the request took. The duration consists of k6 sending the request, the time it waited for a response and the time until the full response was received. The DNS lookup and connection times regarding DNS are not taken into account.
+In all following graphs the blue graph represent the results of the microservice and the orange graph represents the monolith.
+
+
+\begin{tikzpicture}
+\begin{axis}[
+    title={Temperature dependence of  solubility},
+    xlabel={Time (minutes)},
+    ylabel={Time (milliseconds)},
+    xmin=0, xmax=10,
+    ymin=0, ymax=26000,
+    xtick={0,1,2,3,4,5,6,7,8,9,10},
+    ytick={2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000, 20000, 22000},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+    width=14cm
+]
+
+\addplot[
+    color=blue,
+   %  mark=square,
+    ]
+    coordinates {(0,200.3570315)(1,2142.174089)(2,4155.462775)(3,5866.380309)(4,9760.104175)(5,11884.00491)(6,11966.00406)(7,10839.41536)(8,6647.821242)(9,4118.285734)(10,5150.567146)
+}; \addlegendentry{Microservice}
+
+\addplot[
+    color=red,
+   %  mark=square,
+    ]
+    coordinates {(0,264.5572041)(1,3475.554475)(2,6833.760992)(3,9724.137765)(4,16264.08645)(5,20717.04713)(6,21008.7426)(7,19035.46002)(8,11537.90153)(9,6823.223952)(10,6144.26131)
+}; \addlegendentry{Monolith}
+
+\end{axis}
+\end{tikzpicture}
+
+\begin{figure} [H]
+ \begin{center}
+    \includegraphics[width=1\linewidth]{img/Users_Requests_15s_Compare.png}
+ \end{center}
+ \caption{Login Requests}
+ \label{loginRequests}
+\end{figure}
+
+\begin{figure} [H]
+ \begin{center}
+    \includegraphics[width=1\linewidth]{img/Users_Duration_15s_Compare.png}
+ \end{center}
+ \caption{Average Login Request Duration}
+ \label{loginDuration}
+\end{figure}
+
+
+\begin{figure} [H]
+ \begin{center}
+    \includegraphics[width=1\linewidth]{img/Exams_Requests_15s_Compare.png}
+ \end{center}
+ \caption{Exams Requests}
+ \label{examsRequests}
+\end{figure}
+
+
+\begin{figure} [H]
+ \begin{center}
+    \includegraphics[width=1\linewidth]{img/Exams_Duration_15s_Compare.png}
+ \end{center}
+ \caption{Average Exams Request Duration}
+ \label{examsDuration}
+\end{figure}
+
+
+\begin{figure} [H]
+ \begin{center}
+    \includegraphics[width=1\linewidth]{img/File_Requests_15s_Compare.png}
+ \end{center}
+ \caption{File Requests}
+ \label{fileRequests}
+\end{figure}
+
+
+\begin{figure} [H]
+ \begin{center}
+    \includegraphics[width=1\linewidth]{img/File_Duration_15s_Compare.png}
+ \end{center}
+ \caption{Average File Request Duration}
+ \label{fileDuration}
+\end{figure}
+
+
+\begin{figure} [H]
+ \begin{center}
+    \includegraphics[width=1\linewidth]{img/Questions_Requests_15s_Compare.png}
+ \end{center}
+ \caption{Questions Requests}
+ \label{questionsRequests}
+\end{figure}
+
+
+\begin{figure} [H]
+ \begin{center}
+    \includegraphics[width=1\linewidth]{img/Questions_Duration_15s_Compare.png}
+ \end{center}
+ \caption{Average Questions Request Duration}
+ \label{questionsDuration}
+\end{figure}
+
+
+\begin{figure} [H]
+ \begin{center}
+    \includegraphics[width=1\linewidth]{img/Login_Requests_15s_Compare.png}
+ \end{center}
+ \caption{Login Requests}
+ \label{loginRequests}
+\end{figure}
+
+
+\begin{figure} [H]
+ \begin{center}
+    \includegraphics[width=1\linewidth]{img/Login_Duration_15s_Compare.png}
+ \end{center}
+ \caption{Average Login Request Duration}
+ \label{loginDuration}
+\end{figure}
 
 
 \chapter{Conclusion}
