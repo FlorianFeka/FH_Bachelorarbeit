@@ -82,10 +82,10 @@
 %\secondsupervisor[Begutachter]{Titel Vorname Name, Titel}
 %\secondsupervisor[Begutachterinnen]{Titel Vorname Name, Titel}
 \place{Vienna}
-\kurzfassung{\blindtext}
-\schlagworte{Schlagwort1, Schlagwort2, Schlagwort3, Schlagwort4}
-\outline{\blindtext}
-\keywords{Keyword1, Keyword2, Keyword3, Keyword4}
+\kurzfassung{Neben der monolithischen Architektur welche für lange Zeit die primäre Art war Software zu schreiben insbesondere in der Webentwicklung, haben weitere Architekturen hervor gestochen die sich mit der Zeit immer verbreiten. Gleichzeitig wird das Thema Cloud und die vielen Services die diese bietet immer mehr Thema und damit auch die Frage welche Architektur man verwenden soll, wenn man in die Cloud will. Die Frage besteht welche der zwei Architekturen nun in der Cloud performanter ist und besser skaliert. Es wurden schon Arbeiten veröffentlicht in denen die Monolithische Architektur mit der Microservice Architektur gegenüber gestellt wurde, doch oft auf Unternehmensmetriken wie time-to-market oder wie sehr die Architektur beim Optimieren von Unternehmensprozesse hilft. In dieser Arbeit werden die zwei Architekturen auf hinsicht der Performance vergleichen. Dafür wird eine monolithische Web \ac{API} geschrieben die dann auf Microservices runter gebrochen wird. Diese zwei Applikationen werden dann in der Cloud aufgestellt und mit Hilfe von Load-Test Werkzeugen einem Stress Test ausgeliefert um zu sehen welcher der zwei Applikationen mehr Requests verarbeiten kann und wie schnell diese es jeweilig tun. Die Ergebnisse der Tests zeigen das die Wahl der Architektur nur einen Einfluss hat wenn auch nur einer der Web \ac{API} Endpunkte Resourcen intensiver ist.}
+\schlagworte{Monolith, Microservice, Cloud, Architektur Vergleich, Web \ac{API}}
+\outline{Besides the monolithic architecture which has been the primary way to write software for a long time, especially in web development, other architectures have emerged which are becoming more and more widespread over time. At the same time, the topic of the cloud and the many services it offers is becoming more and more of a topic and with it the question of which architecture to use if you want to move to the cloud. The question is which of the two architectures is better performing and scales better in the cloud. There have been papers published comparing the monolithic architecture with the microservice architecture, but often on business metrics like time-to-market or how much the architecture helps to optimize business processes. In this paper, we will compare the two architectures in terms of performance. For this, a monolithic Web \ac{API} is written which is then broken down to microservices. These two applications are then deployed in the cloud and stress tested using load test tools to see which of the two applications can handle more requests and how fast they do it. The results of the tests show that the choice of architecture only has an impact if even one of the Web \ac{API} endpoints is more resource intensive. }
+\keywords{monolith, microservice, cloud, architecture comparison, web \ac{API}}
 %\acknowledgements{\blindtext}
 
 \begin{document}
@@ -190,8 +190,6 @@ Most other work either compared those two architectural styles by business metri
 \chapter{Basics}
 In the following sections the main subjects of this bachelor thesis are summarized and explained. Sections 2.1 - 2.3 describe the theoretical basics and sections 2.4 - 2.9 present the technologies for this thesis.
 
-\section{Web Development}
-% TODO: fill
 
 \section{Monolith}
 Because it is simpler, monolithic architecture is the norm for beginning application development. An all-inclusive single unit called a monolith application is created and deployed \cite{comp}. As shown in Figure \ref{monolith}, a typical monolithic program comprises of a \ac{UI} layer, a business logic layer, and a data interface layer that interacts with the database. Development should begin with monolithic architecture as it speeds up the earliest stages of development \cite{chllng}.
@@ -234,7 +232,7 @@ Microservices are often built using \ac{API}-first approaches, where the \ac{API
 \\
 Microservices are a recent trend where each service can be developed, tested and scaled independently, making it much faster to develop and deploy new versions or features with minimal downtime for users. On the other hand, a monolithic \ac{API} approach is easier to maintain since it consists of a single process across the server instead of multiple processes that have to communicate over the network with each other \cite{pat2021}.
 
-\section{Monolith vs Microservice}
+\section{Monolith vs Microservice} \label{movsmi}
 \begin{table}[!h]
     \centering
     \begin{tabular}{|p{0.15\linewidth}|p{0.3\linewidth}|p{0.4\linewidth}|}
@@ -334,12 +332,7 @@ Authorization is one prevalent application where \ac{JWT}s hold significant impo
 Comprised typically of three components - header, payload, and signature - each part plays an essential role within the architecture of \ac{JWT}s. The header delineates which cryptographic algorithm was employed in generating the signature whereas the payload encompasses claims or pertinent information encapsulated within a JSON object format \cite{superjwt}.
 
 \section{Database}
-A database is used for storing, fetching and manipulating data. There are multiple types of databases which dictate the structure of the data model. The two biggest destictions are between relational and non-relational databases. This thesis uses Microsoft SQL Server which is a relational database \cite{whatmsSQLdb}, meaning it has a relational model which consits of a collection of tables which are made out of rows, columns and could potentially have relations \cite{oraclereldb, ibmreldb}.
-
-\section{Object-Relation Mapper}
-% TODO: fill
-\subsection{EntitiyFramework Core}
-% TODO: fill
+A database is used for storing, fetching and manipulating data. There are multiple types of databases which dictate the structure of the data model. The two biggest distinctions are between relational and non-relational databases. This thesis uses Microsoft SQL Server which is a relational database \cite{whatmsSQLdb}, meaning it has a relational model which consists of a collection of tables which are made out of rows, columns and could potentially have relations \cite{oraclereldb, ibmreldb}.
 
 \section{Swagger}
 Swagger is an open-source set of rules, specifications, and tools for developing and documenting Web \ac{API}s. It enables developers to easily create interactive machine- and human-readable \ac{API} documentation. Swagger also offers an editor for OpenAPI specification files to generate interactive \ac{API} documentation quickly \cite{javapoint}. Furthermore, Swagger was built around OpenAPI spec files, consisting of three components - Swagger Editor, Swagger UI, and Codegen.
@@ -351,7 +344,7 @@ The Swagger Editor is a browser-based editor where developers can write and edit
 Swagger allows users to build, document, test and consume web services. It supports both top-down and bottom-up approaches for \ac{API} development; with top-down, or design-first approaches developers can design an \ac{API} prior to writing any code; while with bottom-up or code-first approaches Swagger takes the code written for an \ac{API} and generates its documentation. Standardizing \ac{API} writing processes with Swagger helps keep track of things which should ideally be included when designing \ac{API}s from scratch \cite{scaleyourapp}.
 
 \section{Load Testing}
-Load Testing is used to place a load on an application to ensure the application can handle the sudden influx of requests and remain stable. Load testing can be achieved through repeated, simultaneous requests. It reveales possible software design flaws or bottle necks within the application \cite{loadtest}.
+Load Testing is used to place a load on an application to ensure the application can handle the sudden influx of requests and remain stable. Load testing can be achieved through repeated, simultaneous requests. It reveals  possible software design flaws or bottlenecks within the application \cite{loadtest}.
 \subsection{k6}
 K6 is an load testing tool which helps with performance testing Web \ac{API}s and other Interfaces \cite{k6doc}. K6 is going to be used to load test the monolith and microservice.
 
@@ -361,16 +354,16 @@ K6 is an load testing tool which helps with performance testing Web \ac{API}s an
 The project created for this thesis called "Examich" is for students to create, manage and share practice exams. This service also offers the option to generate a PDF Version of the practice exams which will simulate a resource intensive action. Since this thesis focuses on the \ac{API} the frontend for this project will be skipped. The application was written as a monolith and then broken down into three microsercvices. The following sections will present how both version was implemented and how those were load tested.
 
 \section{General Overlap}
-Since the Microservice was created through splitting the Monolith many aspects of the projects remained the same so to not list those facts twice this section will present the similarities.
+Since the Microservice was created by splitting the Monolith many aspects of the projects remained the same so to not list those facts twice this section will present the similarities.
 \\
 \noindent
-Both projects were written in C\# using .NET 5 utilising the QuestPDF library for generating the PDFs and storing data in the Microsoft SQL Server 2019. \ac{JWT} was used in both projects to handle authentication.
+Both projects were written in C\# using .NET 5 utilising the QuestPDF library for generating the PDFs and storing data in the Microsoft SQL Server 2019. \ac{JWT} was used in both projects to handle authentication. Both the monolith and microservice are going to be deployed on Microsofts Cloud Service Azure Kubernetes.
 
 \section{Monolith}
 The following subsections will describe the architecture of the Monolith and outline the implementation.
 
 \subsection{Architecture \& Implementation}
-The monolith consists of tree main parts as shown in Figure \ref{examichMonolith}. The \ac{API} that exposes the functionality to its users. The business logic which handles basic Create, Read, Update and Delete operations and generates PDFs. The data interface which handles the communication with the database. A seed of data was defined in the data interface for later to be queried by the load test.
+The monolith consists of three main parts as shown in Figure \ref{examichMonolith}. The \ac{API} that exposes the functionality to its users. The business logic which handles basic Create, Read, Update and Delete operations and generates PDFs. The data interface which handles the communication with the database. A seed of data was defined in the data interface for later to be queried by the load test.
 
 \begin{figure} [H]
  \begin{center}
@@ -381,7 +374,7 @@ The monolith consists of tree main parts as shown in Figure \ref{examichMonolith
 \end{figure}
 
 \noindent
-The monolith exposes following web \ac{API} endpoints which will be load tested:
+The monolith exposes the following web \ac{API} endpoints which will be load tested:
 
 \begin{table}[!ht]
     \centering
@@ -399,11 +392,11 @@ The monolith exposes following web \ac{API} endpoints which will be load tested:
 \end{table}
 \noindent
 \\
-The most resource intensive endpoint would be "/api/Exams/\{examId\}/PDF", since with this the PDF generation is triggered. It will render the PDF and send it as response back to the user. The other endpoints are only for modifying data on the exams so mostly light on the resources.
+The most resource intensive endpoint would be "/api/Exams/\{examId\}/PDF", since with this the PDF generation is triggered. It will render the PDF and send it as a response back to the user. The other endpoints are only for modifying data on the exams so mostly light on the resources.
 \\
 \\
 \noindent
-The application is packaged into a container image using a Dockerfile defining how to build the image which then will be used to create the container running the application. To deploy the application on Kubernetes the structure must be defined in a YAML File. That YAML File defines the Image Kubernetes should run is and on which port the application should be exposed.
+The application is packaged into a container image using a Dockerfile defining how to build the image which then will be used to create the container running the application. To deploy the application on Azure Kubernetes Cluster the structure must be defined in a YAML File. That YAML File defines the Image cluster should run is and on which port the application should be exposed.
 
 \subsection{Data Model}
 
@@ -415,7 +408,7 @@ The application is packaged into a container image using a Dockerfile defining h
  \label{datamodel}
 \end{figure}
 
-Figure \ref{datamodel} presents the data model for the monolithic application. The blue tables are tables generated by the Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext used for user management and authentication, the grey one is generated by EntitiyFrameworkCore to keep track of the migrations and the green ones were specifically created for the project. Every User has zero or more Exams, every Exam has zero or more Questions and every Question has zero or more Answers.
+Figure \ref{datamodel} presents the data model for the monolithic application. The blue tables are tables generated by Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext used for user management and authentication, the grey one is generated by EntitiyFrameworkCore to keep track of the migrations and the green ones were specifically created for the project. Every User has zero or more Exams, every Exam has zero or more Questions and every Question has zero or more Answers.
 
 
 \section{Microservice}
@@ -425,11 +418,10 @@ The following subsections will describe the architecture of the Microservice and
 The Monolith was split into the three following Microservices as seen in Figure \ref{examichMicroservice}:
 
 \begin{itemize}
-\item User Service which handels, Login, Registration and queries regarding user data
-\item Exam Service which handels, Create, Read, Update and Delete operations regarding Exams, Questions and Answers
+\item User Service which handles, Login, Registration and queries regarding user data
+\item Exam Service which handles, Create, Read, Update and Delete operations regarding Exams, Questions and Answers
 \item PDF Service which handles generating a PDF out of one Exam
 \end{itemize}
-
 \begin{figure} [H]
  \begin{center}
     \includegraphics[width=1\linewidth]{img/ExamichMicroserviceArchitecture.png}
@@ -439,14 +431,14 @@ The Monolith was split into the three following Microservices as seen in Figure 
 \end{figure}
 \noindent
 \\
-All service are isolated and run independently from another, one service may still need the other. The User Service is completely isolated and also needs no other service to function as for the Exam Service. The PDF Service on the other hand needs data from the Exam Service to generate a PDF, so there is a dependency on the Exam Service. If the Exam Service is unavailable the PDF service would also fail but the User Service would still function. All endpoints remain the same as in Table \ref{examichMonolithEndpoints} except for the endpoint that handels the generating of the PDF which is under "/api/File/\{examId\}/PDF".
+All service are isolated and run independently from another, one service may still need the other. The User Service is completely isolated and also needs no other service to function as for the Exam Service. The PDF Service on the other hand needs data from the Exam Service to generate a PDF, so there is a dependency on the Exam Service. If the Exam Service is unavailable the PDF service would also fail but the User Service would still function. All endpoints remain the same as in Table \ref{examichMonolithEndpoints} except for the endpoint that handles the generating of the PDF which is under "/api/File/\{examId\}/PDF".
 \\
 \\
 \noindent
-The microsercvices like the monolith are packaged into container images and then deployed to Kubernetes with the differences that in Kubernetes there are now have three Services. To expose those three services through the same Port  an Ingress is defined which forwards various routes to the appropriate Service.
+The microservices like the monolith are packaged into container images and then deployed to the cluster with the differences that in the cluster there are now three Services. To expose those three services through the same Port  an Ingress is defined which forwards various routes to the appropriate Service.
 
 \subsection{Data Model}
-The Data Model for the Microservice is almost the same as for the Monolith in Figure \ref{datamodel} with the distinction that the data model was split in two. Two of the three services use a seperate database with data only relevant for the service. Figure \ref{datamodelmicroservice} displayes that split with one database used for the User Service including all User related tables and one database for the Exam Service including all Exam related tables.
+The Data Model for the Microservice is almost the same as for the Monolith in Figure \ref{datamodel} with the distinction that the data model was split in two. Two of the three services use a separate database with data only relevant to the service. Figure \ref{datamodelmicroservice} displays that split with one database used for the User Service including all User related tables and one database for the Exam Service including all Exam related tables.
 \begin{figure} [H]
  \begin{center}
     \includegraphics[width=1\linewidth]{img/ExamichMicroserviceDataModel.png}
@@ -456,7 +448,7 @@ The Data Model for the Microservice is almost the same as for the Monolith in Fi
 \end{figure}
 
 \section{Performance Benchmark}
-This chapter will cover how the performance with k6 were executed and what measurements were taken. Load tests with k6 are simulated through \ac{VU}s which makes it very CPU intensive so a VM with many cores is needed. As mentioned in the previous section following endpoints of both application are being tested:
+This chapter will cover how the performance with k6 was executed and what measurements were taken. Load tests with k6 are simulated through \ac{VU}s which makes it very CPU intensive so a VM with many cores is needed. As mentioned in the previous section following endpoints of both applications are being tested:
 
 \begin{table}[!ht]
     \centering
@@ -475,135 +467,362 @@ This chapter will cover how the performance with k6 were executed and what measu
 \end{table}
 
 \noindent
-k6 will ramp up to 300 \ac{VU}s in one minute and after another minute take two minutes to ramp up to 900 \ac{VU}s in which k6 will remain for 3 minutes and then ramp down the same way it ramped down. The whole tests needs 10 minutes per endpoint.
+k6 will ramp up to 300 \ac{VU}s in one minute and after another minute take two minutes to ramp up to 900 \ac{VU}s in which k6 will remain for 3 minutes and then ramp down the same way it ramped down. The whole test needs 10 minutes per endpoint. To ensure low latency in the tests the k6 agent will run on an Azure Virtual Machine in the same Datacenter as the Azure Kubernetes Cluster. To set even grounds for the tests with the individual endpoints each service has four endpoints while the monolith also has only four containers.
 
 \chapter{Discussion \& Results}
 After executing the load tests the data compiled and visualized as graphs for this thesis are the total requests done in the 9 minutes per endpoint and the duration the request took. The duration consists of k6 sending the request, the time it waited for a response and the time until the full response was received. The DNS lookup and connection times regarding DNS are not taken into account.
-In all following graphs the blue graph represent the results of the microservice and the orange graph represents the monolith.
+
+\subsection{Light Resource Endpoints}
+The following graphs are of lighter resource usage endpoints. The differences shown by these graphs between monolith and microservice are minimal and bearly distinguishable.
 
 
+% #region login
 \begin{tikzpicture}
 \begin{axis}[
-    title={Temperature dependence of  solubility},
+    title={Request per Minute for /api/Auth/Login},
     xlabel={Time (minutes)},
-    ylabel={Time (milliseconds)},
-    xmin=0, xmax=10,
-    ymin=0, ymax=26000,
-    xtick={0,1,2,3,4,5,6,7,8,9,10},
-    ytick={2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000, 20000, 22000},
+    ylabel={Count},
+    xmin=1, xmax=10,
+    ymin=0, ymax=55000,
+    xtick={1,2,3,4,5,6,7,8,9,10},
+    ytick={0, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000},
     legend pos=north west,
     ymajorgrids=true,
     grid style=dashed,
-    width=14cm
+    width=12cm
 ]
 
 \addplot[
     color=blue,
    %  mark=square,
     ]
-    coordinates {(0,200.3570315)(1,2142.174089)(2,4155.462775)(3,5866.380309)(4,9760.104175)(5,11884.00491)(6,11966.00406)(7,10839.41536)(8,6647.821242)(9,4118.285734)(10,5150.567146)
+    coordinates {(1, 11055)(2, 44985)(3, 45134)(4, 45116)(5, 45162)(6, 45281)(7, 45081)(8, 45355)(9, 44938)(10, 31527)
 }; \addlegendentry{Microservice}
 
 \addplot[
     color=red,
    %  mark=square,
     ]
-    coordinates {(0,264.5572041)(1,3475.554475)(2,6833.760992)(3,9724.137765)(4,16264.08645)(5,20717.04713)(6,21008.7426)(7,19035.46002)(8,11537.90153)(9,6823.223952)(10,6144.26131)
+    coordinates {(1, 10100)(2, 45323)(3, 45538)(4, 45529)(5, 45359)(6, 45381)(7, 45435)(8, 45243)(9, 45551)(10, 32794)
 }; \addlegendentry{Monolith}
 
 \end{axis}
 \end{tikzpicture}
+\begin{tikzpicture}
+\begin{axis}[
+    title={Request Duration Mean per Minute for /api/Auth/Login},
+    xlabel={Time (minutes)},
+    ylabel={Time (milliseconds)},
+    xmin=1, xmax=10,
+    ymin=0, ymax=1500,
+    xtick={1,2,3,4,5,6,7,8,9,10},
+    ytick={150, 300, 450, 600, 750, 900, 1050, 1200, 1350, 1500},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+    width=12cm
+]
 
-\begin{figure} [H]
- \begin{center}
-    \includegraphics[width=1\linewidth]{img/Users_Requests_15s_Compare.png}
- \end{center}
- \caption{Login Requests}
- \label{loginRequests}
-\end{figure}
+\addplot[
+    color=blue,
+   %  mark=square,
+    ]
+    coordinates {(1, 76.96608583)(2, 302.0921593)(3, 414.7108936)(4, 709.851739)(5, 1098.846158)(6, 1192.401942)(7, 1175.931465)(8, 888.5370464)(9, 501.5327909)(10, 398.2923708)
+}; \addlegendentry{Microservice}
 
-\begin{figure} [H]
- \begin{center}
-    \includegraphics[width=1\linewidth]{img/Users_Duration_15s_Compare.png}
- \end{center}
- \caption{Average Login Request Duration}
- \label{loginDuration}
-\end{figure}
+\addplot[
+    color=red,
+   %  mark=square,
+    ]
+    coordinates {(1, 70.56194977)(2, 292.6783839)(3, 409.5729679)(4, 698.188539)(5, 1081.159473)(6, 1191.194963)(7, 1175.495195)(8, 891.3331957)(9, 501.1194849)(10, 397.0542417)
+}; \addlegendentry{Monolith}
+
+\end{axis}
+\end{tikzpicture}
+% endregion
+
+% #region questions
+\begin{tikzpicture}
+\begin{axis}[
+    title={Request per Minute for /api/Questions/Exam/\{examId\}},
+    xlabel={Time (minutes)},
+    ylabel={Count},
+    xmin=1, xmax=10,
+    ymin=0, ymax=48000,
+    xtick={1,2,3,4,5,6,7,8,9,10},
+    ytick={4000, 8000, 12000, 16000, 20000, 24000, 28000, 32000, 36000, 40000},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+    width=12cm
+]
+
+\addplot[
+    color=blue,
+   %  mark=square,
+    ]
+    coordinates {(1, 7172)(2, 38964)(3, 39384)(4, 39401)(5, 39425)(6, 39463)(7, 39394)(8, 39426)(9, 39487)(10, 29570)
+}; \addlegendentry{Microservice}
+
+\addplot[
+    color=red,
+   %  mark=square,
+    ]
+    coordinates {(1, 6256)(2, 38363)(3, 38599)(4, 38125)(5, 37890)(6, 38043)(7, 37947)(8, 38156)(9, 38501)(10, 29884)
+}; \addlegendentry{Monolith}
+
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}
+\begin{axis}[
+    title={Request Duration Mean per Minute for /api/Questions/Exam/\{examId\}},
+    xlabel={Time (minutes)},
+    ylabel={Time (milliseconds)},
+    xmin=1, xmax=10,
+    ymin=0, ymax=1750,
+    xtick={1,2,3,4,5,6,7,8,9,10},
+    ytick={150, 300, 450, 600, 750, 900, 1050, 1200, 1350, 1500},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+    width=12cm
+]
+
+\addplot[
+    color=blue,
+   %  mark=square,
+    ]
+    coordinates {(1, 81.57901054)(2, 331.3201321)(3, 470.2103125)(4, 791.0683888)(5, 1225.472245)(6, 1366.962076)(7, 1362.035365)(8, 1050.547978)(9, 588.4202396)(10, 456.4667852)
+}; \addlegendentry{Microservice}
+
+\addplot[
+    color=red,
+   %  mark=square,
+    ]
+    coordinates {(1, 73.50566628)(2, 326.3956512)(3, 476.6389503)(4, 807.632652)(5, 1274.649247)(6, 1418.484783)(7, 1414.013025)(8, 1084.419876)(9, 613.8820904)(10, 469.5884698)
+}; \addlegendentry{Monolith}
+
+\end{axis}
+\end{tikzpicture}
+% endregion
+
+The duration and the amount of requests handled for both architectures are about the same showing that for web \ac{API} endpoints with low resource usage microservices do not bring any performance benefits in this case.
+
+\clearpage
+\subsection{Heavy Resource Endpoints}
+The following graphs of endpoints with higher resource usage display the gap between monolith and microservice widening in favor of the microservice.
 
 
-\begin{figure} [H]
- \begin{center}
-    \includegraphics[width=1\linewidth]{img/Exams_Requests_15s_Compare.png}
- \end{center}
- \caption{Exams Requests}
- \label{examsRequests}
-\end{figure}
+
+% #region users
+\begin{tikzpicture}
+\begin{axis}[
+    title={Request per Minute for /api/Users/Search?username=\{username\}},
+    xlabel={Time (minutes)},
+    ylabel={Count},
+    xmin=1, xmax=10,
+    ymin=0, ymax=240000,
+    xtick={1,2,3,4,5,6,7,8,9,10},
+    ytick={20000, 40000, 60000, 80000, 100000, 120000, 140000, 160000, 180000, 200000},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+    width=12cm
+]
+
+\addplot[
+    color=blue,
+   %  mark=square,
+    ]
+    coordinates {(1, 11960)(2, 188256)(3, 190987)(4, 186635)(5, 187132)(6, 187351)(7, 187430)(8, 187568)(9, 186016)(10, 152433)
+}; \addlegendentry{Microservice}
+
+\addplot[
+    color=red,
+   %  mark=square,
+    ]
+    coordinates {(1, 5251)(2, 142260)(3, 145048)(4, 144279)(5, 143970)(6, 144891)(7, 144703)(8, 145334)(9, 145214)(10, 126912)
+}; \addlegendentry{Monolith}
+
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}
+\begin{axis}[
+    title={Request Duration Mean per Minute for /api/Users/Search?username=\{username\}},
+    xlabel={Time (minutes)},
+    ylabel={Time (milliseconds)},
+    xmin=1, xmax=10,
+    ymin=0, ymax=450,
+    xtick={1,2,3,4,5,6,7,8,9,10},
+    ytick={40, 80, 120, 160, 200, 240, 280, 320, 360, 400},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+    width=12cm
+]
+
+\addplot[
+    color=blue,
+   %  mark=square,
+    ]
+    coordinates {(1, 28.64911701)(2, 64.01450185)(3, 95.51244705)(4, 162.6077447)(5, 256.3218017)(6, 287.8049417)(7, 285.9397712)(8, 221.3044419)(9, 128.1369566)(10, 94.71526498)
+}; \addlegendentry{Microservice}
+
+\addplot[
+    color=red,
+   %  mark=square,
+    ]
+    coordinates {(1, 28.62215946)(2, 77.96694228)(3, 124.6195747)(4, 202.1805984)(5, 326.4333459)(6, 372.2103948)(7, 371.8769494)(8, 294.295701)(9, 171.1912288)(10, 123.3112889)
+}; \addlegendentry{Monolith}
+
+\end{axis}
+\end{tikzpicture}
+% endregion
 
 
-\begin{figure} [H]
- \begin{center}
-    \includegraphics[width=1\linewidth]{img/Exams_Duration_15s_Compare.png}
- \end{center}
- \caption{Average Exams Request Duration}
- \label{examsDuration}
-\end{figure}
+
+% #region exams
+\begin{tikzpicture}
+\begin{axis}[
+    title={Request per Minute for /api/Exams/User},
+    xlabel={Time (minutes)},
+    ylabel={Count},
+    xmin=1, xmax=10,
+    ymin=0, ymax=300000,
+    xtick={1,2,3,4,5,6,7,8,9,10},
+    ytick={25000, 50000, 75000, 100000, 125000, 150000, 175000, 200000, 225000, 250000},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+    width=12cm
+]
+
+\addplot[
+    color=blue,
+   %  mark=square,
+    ]
+    coordinates {(1, 104699)(2, 243780)(3, 239423)(4, 235549)(5, 235771)(6, 234462)(7, 233596)(8, 236347)(9, 237497)(10, 87437)
+}; \addlegendentry{Microservice}
+
+\addplot[
+    color=red,
+   %  mark=square,
+    ]
+    coordinates {(1, 67838)(2, 155723)(3, 157482)(4, 155952)(5, 157645)(6, 157806)(7, 157304)(8, 157418)(9, 157881)(10, 70778)
+}; \addlegendentry{Monolith}
+
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}
+\begin{axis}[
+    title={Request Duration Mean per Minute for /api/Exams/User},
+    xlabel={Time (minutes)},
+    ylabel={Time (milliseconds)},
+    xmin=1, xmax=10,
+    ymin=0, ymax=400,
+    xtick={1,2,3,4,5,6,7,8,9,10},
+    ytick={35, 70, 105, 140, 175, 210, 245, 280, 315, 350},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+    width=12cm
+]
+
+\addplot[
+    color=blue,
+   %  mark=square,
+    ]
+    coordinates {(1, 33.75440701)(2, 68.22505615)(3, 89.45933764)(4, 161.8957117)(5, 222.8614944)(6, 229.6773783)(7, 215.7759879)(8, 142.5641189)(9, 80.69090542)(10, 75.74630315)
+}; \addlegendentry{Microservice}
+
+\addplot[
+    color=red,
+   %  mark=square,
+    ]
+    coordinates {(1, 40.57101134)(2, 103.6190858)(3, 131.2498636)(4, 236.1547766)(5, 330.2298651)(6, 341.9802514)(7, 325.7255893)(8, 222.7114201)(9, 125.1077236)(10, 112.9569517)
+}; \addlegendentry{Monolith}
+
+\end{axis}
+\end{tikzpicture}
+% endregion
 
 
-\begin{figure} [H]
- \begin{center}
-    \includegraphics[width=1\linewidth]{img/File_Requests_15s_Compare.png}
- \end{center}
- \caption{File Requests}
- \label{fileRequests}
-\end{figure}
+% #region file
+\begin{tikzpicture}
+\begin{axis}[
+    title={Request per Minute for /api/[File/Exams]/\{examId\}/PDF},
+    xlabel={Time (minutes)},
+    ylabel={Time (milliseconds)},
+    xmin=1, xmax=10,
+    ymin=0, ymax=5500,
+    xtick={1,2,3,4,5,6,7,8,9,10},
+    ytick={0,500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+    width=12cm
+]
+
+\addplot[
+    color=blue,
+   %  mark=square,
+    ]
+    coordinates {(1, 1987)(2, 4294)(3, 4341)(4, 4399)(5, 4471)(6, 4450)(7, 4541)(8, 4491)(9, 4521)(10, 2553)
+}; \addlegendentry{Microservice}
+
+\addplot[
+    color=red,
+   %  mark=square,
+    ]
+    coordinates {(1, 1029)(2, 2558)(3, 2581)(4, 2599)(5, 2470)(6, 2652)(7, 2556)(8, 2723)(9, 2724)(10, 1877)
+}; \addlegendentry{Monolith}
+
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}
+\begin{axis}[
+    title={Request Duration Mean per Minute for /api/[File/Exams]/\{examId\}/PDF},
+    xlabel={Time (minutes)},
+    ylabel={Count},
+    xmin=1, xmax=10,
+    ymin=0, ymax=24000,
+    xtick={1,2,3,4,5,6,7,8,9,10},
+    ytick={2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000, 20000, 22000},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+    width=12cm
+]
+
+\addplot[
+    color=blue,
+   %  mark=square,
+    ]
+    coordinates {(1, 1027.690308)(2, 3528.517883)(3, 4465.213087)(4, 7604.881331)(5, 11202.96727)(6, 11922.4563)(7, 11783.95181)(8, 9236.021711)(9, 4879.770097)(10, 4223.731491)
+}; \addlegendentry{Microservice}
+
+\addplot[
+    color=red,
+   %  mark=square,
+    ]
+    coordinates {(1, 1327.496037)(2, 5512.226077)(3, 7162.583965)(4, 12011.17865)(5, 18762.64226)(6, 20763.42031)(7, 20871.45949)(8, 16697.1511)(9, 8937.347008)(10, 6742.616808)
+}; \addlegendentry{Monolith}
+
+\end{axis}
+\end{tikzpicture}
+% endregion
 
 
-\begin{figure} [H]
- \begin{center}
-    \includegraphics[width=1\linewidth]{img/File_Duration_15s_Compare.png}
- \end{center}
- \caption{Average File Request Duration}
- \label{fileDuration}
-\end{figure}
+The duration and the amount of requests handled for both architectures are about the same showing that for web \ac{API} endpoints with low resource usage microservices do not bring any performance benefits in this case.
 
-
-\begin{figure} [H]
- \begin{center}
-    \includegraphics[width=1\linewidth]{img/Questions_Requests_15s_Compare.png}
- \end{center}
- \caption{Questions Requests}
- \label{questionsRequests}
-\end{figure}
-
-
-\begin{figure} [H]
- \begin{center}
-    \includegraphics[width=1\linewidth]{img/Questions_Duration_15s_Compare.png}
- \end{center}
- \caption{Average Questions Request Duration}
- \label{questionsDuration}
-\end{figure}
-
-
-\begin{figure} [H]
- \begin{center}
-    \includegraphics[width=1\linewidth]{img/Login_Requests_15s_Compare.png}
- \end{center}
- \caption{Login Requests}
- \label{loginRequests}
-\end{figure}
-
-
-\begin{figure} [H]
- \begin{center}
-    \includegraphics[width=1\linewidth]{img/Login_Duration_15s_Compare.png}
- \end{center}
- \caption{Average Login Request Duration}
- \label{loginDuration}
-\end{figure}
-
+The gap widens as the operations behind the endpoints get more resource intensive. The most drastic example would be the PDF endpoint in which at peak requests the monolith's endpoint required 20.96 seconds to respond while the microservice's endpoint only took 11.85 seconds. This would make the microservice's PDF endpoint roughly 43\% faster than the monolith's endpoint, while also handling almost 2000 requests more than the monolith per minute at peak request count. Even though both applications were tested with the same amount of containers the microservice still performed better on resource heavy endpoints.
 
 \chapter{Conclusion}
+This thesis tried to compare performance and scalability of monolithic web \ac{API} with microservice \ac{API}s in a cloud environment. Since the monolithic architecture has been predominantly used in web development and with the Cloud and all its services becoming more relevant the question of which architecture to use consequently becomes relevant as well. To test this thesis a monolithic and microservice web \ac{API} are deployed into an Azure Kubernetes Cluster and load testet to show how quickly and much requests each \ac{API} can handle.
+\\
+\noindent
+The results show that the performance difference is insignificant for low-resource endpoints, so the choice between monolith and microservice no longer depends on performance but on other factors in cases like these. These other factors may include points from section \ref{movsmi}. Microservices architectures offer a noteworthy advantage when it comes to scaling application endpoints that are more heavily reliant on resources. In such cases, the performance distinction between monolithic and microservices architectures becomes consequential. Microservices architectures can independently scale these resource-driven endpoints, setting them apart from the other endpoints. This is particularly beneficial in applications where particular endpoints are anticipated to receive significant traffic.
+
 
 %
 % Hier beginnen die Verzeichnisse.
